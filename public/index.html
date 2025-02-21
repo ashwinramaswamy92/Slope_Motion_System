@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Screen</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styleclassroom.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Slope System</h1>
+      <h3>Students Movement Graphs</h3>
+      <div
+        style="position: relative; height: 45vh; width: 90vw"
+        class="chart-container"
+      >
+        <canvas id="mainChart"></canvas>
+      </div>
+
+      <div>
+        <label for="yMaxInput">Enter max value for Y-axis:</label>
+        <input type="number" id="yMaxInput" value="60" />
+      </div>
+
+      <div>
+        <label for="inputTypeSelect">Choose input type:</label>
+        <select id="inputTypeSelect">
+          <option value="points">Data Points (x,y)</option>
+          <option value="function">Function (e.g., y=x^2+3)</option>
+        </select>
+      </div>
+      <div id="dataInputContainer">
+        <label for="dataPointsInput"
+          >Enter data points (x,y) separated by spaces:</label
+        >
+        <input
+          type="text"
+          id="dataPointsInput"
+          placeholder="e.g., 1,10 2,20 3,30"
+        />
+      </div>
+      <div id="functionInputContainer" style="display: none">
+        <label for="functionInput">Enter a function of x (e.g., x**2+3):</label>
+        <input type="text" id="functionInput" placeholder="e.g., x**2+3" />
+      </div>
+      <button id="addDataButton">Add Data</button>
+
+      <button id="generateCodeButton">Generate Classroom Code</button>
+      <p id="codeDisplay"></p>
+
+      <script src="main.js"></script>
+    </div>
+  </body>
+</html>

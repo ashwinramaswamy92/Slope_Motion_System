@@ -1,0 +1,24 @@
+button:hover {
+  background-color: darkgray;
+}
+
+/* Button Styles */
+button {
+  font-size: calc(1em + 1vw);
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+input[type="number"],
+input[type="text"] {
+  font-size: calc(1em + 1vw);
+  padding: 1.5%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+}

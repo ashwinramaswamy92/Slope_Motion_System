@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Screen</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="user.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Slippery Slope</h1>
+      <h2>click the start button to create your motion graph!</h2>
+      <div
+        style="
+          background-color: pink;
+          padding: 10px;
+          border-radius: 10px;
+          margin: 5px;
+        "
+        id="head"
+      >
+        <div id="dataCount" style="display: none">Data Points:</div>
+        <div id="classroomInput">
+          <input
+            type="text"
+            id="classroomCode"
+            placeholder="Enter Classroom Code"
+          />
+          <button id="joinButton">Join Classroom</button>
+        </div>
+        <h3 style="display: none" id="connectionStatus"></h3>
+        <h3 style="display: none" id="connectionError"></h3>
+      </div>
+      <div class="chart-container">
+        <h3>Acceleration over Time Graph:</h3>
+        <canvas id="myChart"></canvas>
+      </div>
+      <div style="display: none" id="steps-class" class="chart-container">
+        <h3>Steps over Time Graph:</h3>
+        <canvas id="stepsChart"></canvas>
+      </div>
+      <div class="center-container">
+        <input
+          type="number"
+          id="yMaxInput"
+          placeholder="Enter max value for Y-axis"
+        />
+      </div>
+      <div id="stepCount" style="display: none">Step Count: 0</div>
+      <button id="startButton">Start Collecting Data for 30s</button>
+      <button id="sendButton">Send Data</button>
+    </div>
+  </body>
+</html>
