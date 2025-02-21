@@ -1,7 +1,8 @@
 # Slope_Motion_System
 
+Initial commit forked from Melwina's REPL: https://replit.com/@MelwinaAlbuque1/myclassroom
+
 ## 21.02.25 
-Initial commit forked from Melwina Albequerque: https://replit.com/@MelwinaAlbuque1/myclassroom
 The following steps can be followed to run this in your local system and use a mobile (both devices connected to the same LAN/wifi network) to generate and send data:
 1. Clone the repository to your computer.
 2. Make sure you have NodeJS installed and added to path.
