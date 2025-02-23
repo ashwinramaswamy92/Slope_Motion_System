@@ -8,7 +8,7 @@ h1 {
   text-align: center;
   font-size: 42px;
   font-weight: bold;
-  color: rgb(199, 136, 209); 
+  color:  rgb(155, 204, 204); 
   letter-spacing: 1px;  
 }
 
@@ -21,7 +21,10 @@ h2 {
   letter-spacing: 2px;
 }
 
-
+h3{
+  position: relative;
+  margin-top: -20px;
+}
 button:hover {
   background-color: darkgray;
 }
@@ -58,4 +61,58 @@ input[type="text"] {
   box-sizing: border-box;
   margin-bottom: 1em;
   margin-top: 1em;
+}
+
+
+.button-container button{
+  background-color: rgb(155, 204, 204);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  button {
+    font-size: calc(0.9em + 2vw);
+    padding: 3%;
+  }
+
+  .chart-container {
+    width: 90vw;
+    left: 1vw;
+    height: 40vh;
+    border-radius: 30px;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    font-size: calc(0.9em + 2vw);
+    width: 80%;
+    padding: 3%;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .button-container button{
+    font-size: calc(0.9em + 1vw);
+    background-color: rgb(123, 194, 194);
+    padding: 3%;
+    width: 80%;
+    margin-top: 2%;
+  }
 }

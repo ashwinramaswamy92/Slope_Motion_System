@@ -94,3 +94,45 @@ input[type="text"] {
 .button-container button{
   background-color: rgb(155, 204, 204);
 }
+
+/* Responsive Design for Mobile */
+@media screen and (max-width: 768px) {
+  h2,
+  h3,
+  p,
+  label {
+    font-size: calc(0.9em + 1vw);
+  }
+
+  button {
+    font-size: calc(0.9em + 1vw);
+    padding: 2%;
+    width: 80%;
+  }
+
+  .chart-container {
+    width: 90vw;
+    height: 40vh;
+    left:1vw;
+    border-radius: 30px;
+  }
+
+  .maxinput-div,
+  .data-type-div,
+  .custom-input-div {
+    width: 80vw;
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #inputTypeSelect {
+    font-size: 1.2em;
+    height: calc(2.5em + 1vw);
+  }
+}
