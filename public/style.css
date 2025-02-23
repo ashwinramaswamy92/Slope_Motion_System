@@ -23,7 +23,7 @@ h2 {
 
 h3{
   position: relative;
-  margin-top: -20px;
+  margin-top: 10px;
 }
 button:hover {
   background-color: darkgray;
@@ -41,14 +41,14 @@ button {
 
 .chart-container{
   position: relative;
-  height: 45vh;
+  /* height: 45vh;
   width: 50vw;
-  left:23vw; /* for laptop */
+  left:23vw; 
   padding: 30px 10px 10px 10px;
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0.133);
   border-radius: 50px;
-  border: 1px solid rgb(58, 56, 59); 
+  border: 1px solid rgb(58, 56, 59);  */
 }
 
 input[type="number"],
@@ -89,7 +89,7 @@ input[type="text"] {
     width: 80%;
   }
 
-  .chart-container {
+  /* .chart-container {
     width: 90vw;
     align-items: center;
     justify-content: center;
@@ -99,7 +99,7 @@ input[type="text"] {
   }
   .chart-container canvas{
     margin-top: 5vh;
-  }
+  } */
 
   input[type="number"],
   input[type="text"] {
