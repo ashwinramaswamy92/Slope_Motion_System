@@ -127,20 +127,6 @@ input[type="text"] {
   position: relative;
 }
 
-/* Fixed size for desktop */
-@media screen and (min-width: 769px) {
-  .chart-container {
-    width: 50vw;
-    height: 45vh;
-    left: 24vw;
-    padding: 30px 10px 10px 10px;
-    margin-bottom: 30px;
-    border-radius: 50px;
-}
-canvas#mainChart {
-  width: 100% !important;
-  height: 100% !important;
-}
-  }
+
 
   
