@@ -10,6 +10,8 @@ const io = socketIo(server);
 const classrooms = {};
 const MAX_USERS_PER_CLASSROOM = 10;
 
+var userData = {};
+
 app.use(express.static("public"));
 
 io.on("connection", (socket) => {
@@ -77,14 +79,26 @@ io.on("connection", (socket) => {
 
   // Receive and broadcast graph data
   socket.on("sendGraphData", (data) => {
-    const { classroomCode, graphData } = data; // Destructure data to get classroomCode and graphData
+    const { classroomCode, graphData } = data;
     if (classrooms[classroomCode]) {
       const uniqueGraphData = removeRedundantXValues(graphData);
       io.to(classroomCode).emit("receiveGraphData", uniqueGraphData);
-      console.log("data sent to classroom");
+
+      // Store user data with socket ID as the key
+      userData[socket.id] = {
+        user: socket.id, // You can replace this with a custom username if available
+        data: uniqueGraphData,
+      };
     }
-    console.log(classroomCode);
-    console.log(graphData);
+  });
+
+  // Send all collected data to the client
+  socket.on("requestAllData", () => {
+    socket.emit("allDataResponse", userData);
+  });
+
+  socket.on("clearData", () => {
+    userData = {}; // Reset the user data storage
   });
 
   // Handle disconnection
@@ -101,6 +115,8 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server listening on port 3000");
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });

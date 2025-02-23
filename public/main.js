@@ -56,6 +56,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const functionInputContainer = document.getElementById(
     "functionInputContainer"
   );
+  // Add event listener for the Download Data button
+  const downloadDataButton = document.getElementById("downloadDataButton");
+  downloadDataButton.addEventListener("click", () => {
+    socket.emit("requestAllData"); // Request all data from the server
+  });
+
+  // Listen for the server's response with all data
+  socket.on("allDataResponse", (data) => {
+    // Convert the data to a JSON string
+    const jsonData = JSON.stringify(data, null, 2);
+
+    // Create a Blob and trigger a download
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "user_data.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
 
   inputTypeSelect.addEventListener("change", () => {
     if (inputTypeSelect.value === "points") {
@@ -130,6 +150,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const addDataButton = document.getElementById("addDataButton");
   const dataPointsInput = document.getElementById("dataPointsInput");
   const functionInput = document.getElementById("functionInput");
+  // Add event listener for the Refresh Data button
+  const refreshDataButton = document.getElementById("refreshDataButton");
+  refreshDataButton.addEventListener("click", () => {
+    // Clear the chart data
+    mainData.labels = [];
+    mainData.datasets = [];
+    mainChart.update();
+
+    // Optionally, notify the server to clear stored data (if needed)
+    socket.emit("clearData");
+  });
 
   addDataButton.addEventListener("click", () => {
     const colorIndex = mainData.datasets.length;
