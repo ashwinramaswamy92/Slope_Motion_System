@@ -84,8 +84,9 @@ input[type="text"] {
   }
 
   button {
-    font-size: calc(0.9em + 2vw);
+    font-size: calc(0.9em + 1vw);
     padding: 3%;
+    width: 80%;
   }
 
   .chart-container {
