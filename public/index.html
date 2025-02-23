@@ -18,19 +18,19 @@
         <canvas id="mainChart"></canvas>
       </div>
 
-      <div>
+      <div class="maxinput-div">
         <label for="yMaxInput">Enter max value for Y-axis:</label>
         <input type="number" id="yMaxInput" value="60" />
       </div>
 
-      <div>
+      <div class="data-type-div">
         <label for="inputTypeSelect">Choose input type:</label>
         <select id="inputTypeSelect">
           <option value="points">Data Points (x,y)</option>
           <option value="function">Function (e.g., y=x^2+3)</option>
         </select>
       </div>
-      <div id="dataInputContainer">
+      <div class="custom-input-div" id="dataInputContainer">
         <label for="dataPointsInput"
           >Enter data points (x,y) separated by spaces:</label
         >
@@ -40,17 +40,18 @@
           placeholder="e.g., 1,10 2,20 3,30"
         />
       </div>
-      <div id="functionInputContainer" style="display: none">
+      <div class="custom-input-div" id="functionInputContainer" style="display: none">
         <label for="functionInput">Enter a function of x (e.g., x**2+3):</label>
         <input type="text" id="functionInput" placeholder="e.g., x**2+3" />
       </div>
-      <button id="addDataButton">Add Data</button>
+      <div class="button-container">
+        <button id="addDataButton">Add Data</button>
 
-      <button id="generateCodeButton">Generate Classroom Code</button>
-      <button id="downloadDataButton">Download Data</button>
-      <button id="refreshDataButton">Refresh Data</button>
+        <button id="generateCodeButton">Generate Classroom Code</button>
+        <button id="downloadDataButton">Download Data</button>
+        <button id="refreshDataButton">Refresh Data</button>
+      </div>
       <p id="codeDisplay"></p>
-
       <script src="main.js"></script>
     </div>
   </body>
