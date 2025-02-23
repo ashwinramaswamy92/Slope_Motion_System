@@ -33,3 +33,19 @@ input[type="text"] {
   box-sizing: border-box;
   margin-bottom: 1em;
 }
+
+.title{
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.chart-container{
+  position: relative;
+  height: 45vh;
+  width: 50vw;
+  left:23vw; /* for laptop */
+  padding: 30px 10px 10px 10px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.133);
+  border-radius: 50px;
+}
