@@ -15,32 +15,33 @@
       <div class="chart-container">
         <canvas id="mainChart"></canvas>
       </div>
+      <div class="input-containers">
+        <div class="maxinput-div">
+          <label for="yMaxInput">Enter max value for Y-axis:</label>
+          <input type="number" id="yMaxInput" value="60" />
+        </div>
 
-      <div class="maxinput-div">
-        <label for="yMaxInput">Enter max value for Y-axis:</label>
-        <input type="number" id="yMaxInput" value="60" />
-      </div>
-
-      <div class="data-type-div">
-        <label for="inputTypeSelect">Choose input type:</label>
-        <select id="inputTypeSelect">
-          <option value="points">Data Points (x,y)</option>
-          <option value="function">Function (e.g., y=x^2+3)</option>
-        </select>
-      </div>
-      <div class="custom-input-div" id="dataInputContainer">
-        <label for="dataPointsInput"
-          >Enter data points (x,y) separated by spaces:</label
-        >
-        <input
-          type="text"
-          id="dataPointsInput"
-          placeholder="e.g., 1,10 2,20 3,30"
-        />
-      </div>
-      <div class="custom-input-div" id="functionInputContainer" style="display: none">
-        <label for="functionInput">Enter a function of x (e.g., x**2+3):</label>
-        <input type="text" id="functionInput" placeholder="e.g., x**2+3" />
+        <div class="data-type-div">
+          <label for="inputTypeSelect">Choose input type:</label>
+          <select id="inputTypeSelect">
+            <option value="points">Data Points (x,y)</option>
+            <option value="function">Function (e.g., y=x^2+3)</option>
+          </select>
+        </div>
+        <div class="custom-input-div" id="dataInputContainer">
+          <label for="dataPointsInput"
+            >Enter data points (x,y) separated by spaces:</label
+          >
+          <input
+            type="text"
+            id="dataPointsInput"
+            placeholder="e.g., 1,10 2,20 3,30"
+          />
+        </div>
+        <div class="custom-input-div" id="functionInputContainer" style="display: none">
+          <label for="functionInput">Enter a function of x (e.g., x**2+3):</label>
+          <input type="text" id="functionInput" placeholder="e.g., x**2+3" />
+        </div>
       </div>
       <div class="button-container">
         <button id="addDataButton">Add Data</button>

@@ -120,10 +120,15 @@ input[type="text"] {
     padding: 0px;
     border-radius: 20px;
   } */
-
+  .input-containers{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
   .maxinput-div,
   .data-type-div,
   .custom-input-div {
+    position: relative;
     width: 80vw;
     padding: 15px;
     border-radius: 15px;
