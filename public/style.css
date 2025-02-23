@@ -1,3 +1,27 @@
+*{
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  color: rgb(199, 136, 209); 
+  letter-spacing: 1px;  
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #39323c; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
 button:hover {
   background-color: darkgray;
 }
@@ -12,13 +36,26 @@ button {
   border-radius: 10px;
 }
 
+.chart-container{
+  position: relative;
+  height: 45vh;
+  width: 50vw;
+  left:23vw; /* for laptop */
+  padding: 30px 10px 10px 10px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.133);
+  border-radius: 50px;
+  border: 1px solid rgb(58, 56, 59); 
+}
+
 input[type="number"],
 input[type="text"] {
   font-size: calc(1em + 1vw);
   padding: 1.5%;
   border: 1px solid #ccc;
   border-radius: 10px;
-  width: 100%;
+  width: 40%;
   box-sizing: border-box;
   margin-bottom: 1em;
+  margin-top: 1em;
 }
