@@ -122,3 +122,24 @@ input[type="text"] {
     margin-top: 2%;
   }
 }
+
+.chart-container {
+  position: relative;
+  padding: 30px 10px 10px 10px;
+  margin-bottom: 30px;
+  border-radius: 50px;
+}
+
+/* Fixed size for desktop */
+@media screen and (min-width: 769px) {
+  .chart-container {
+    width: 50vw;
+    height: 45vh;
+    left: 23vw;
+  }
+
+  canvas#mainChart {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
