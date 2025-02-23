@@ -8,15 +8,15 @@ h1 {
   text-align: center;
   font-size: 42px;
   font-weight: bold;
-  color:  rgb(155, 204, 204); 
+  color:  rgb(45, 51, 107); 
   letter-spacing: 1px;  
 }
 
 h2 {
   text-align: center;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
-  color: #39323c; 
+  color:rgb(120, 134, 199); 
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -26,9 +26,12 @@ h3{
   margin-top: 10px;
 }
 button:hover {
-  background-color: darkgray;
+  background-color: rgb(120, 134, 199);
 }
 
+.container{
+  background-color: (255, 242, 242);
+}
 /* Button Styles */
 button {
   font-size: calc(1em + 1vw);
@@ -37,6 +40,7 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 10px;
+  background-color: rgb(169, 181, 223);
 }
 
 .chart-container{
@@ -65,7 +69,7 @@ input[type="text"] {
 
 
 .button-container button{
-  background-color: rgb(155, 204, 204);
+  background-color: rgb(120, 134, 199);
 }
 
 /* Responsive Design */
@@ -116,7 +120,7 @@ input[type="text"] {
 
   .button-container button{
     font-size: calc(0.9em + 1vw);
-    background-color: rgb(123, 194, 194);
+    background-color:  rgb(120, 134, 199);
     padding: 3%;
     width: 80%;
     margin-top: 2%;

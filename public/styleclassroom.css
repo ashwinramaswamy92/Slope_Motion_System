@@ -1,6 +1,21 @@
 /* Responsive Typography */
+h1{
+  text-align: center;
+  font-size: 42px;
+  font-weight: 900;
+  color: rgb(246, 247, 250) ; 
+  letter-spacing: 1px; 
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
 h2,
-h3,
+h3{
+  font-size: calc(1em + 0.5vw);
+  line-height: 1.4;
+  margin-bottom: 1em;
+  font-weight: normal;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(169, 181, 223); 
+}
 p,
 label {
   font-size: calc(1em + 0.5vw);
@@ -8,12 +23,19 @@ label {
   margin-bottom: 1em;
   font-weight: normal;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(25, 34, 65); 
 }
-
+#title-container{
+  background-color: rgb(45, 51, 107);
+  padding: 20px;
+  border-radius: 20px;
+}
 button:hover {
-  background-color: darkgray;
+  background-color: rgb(169, 181, 223);
 }
-
+.container{
+  background-color: (255, 242, 242);
+}
 /* Button Styles */
 button {
   font-size: calc(1em + 0.5vw);
@@ -22,6 +44,7 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 10px;
+  background-color:  rgb(120, 134, 199);
 }
 
 input[type="number"],
@@ -58,6 +81,7 @@ input[type="text"] {
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 30px;
+  background-color: white;
 }
 
 .data-type-div{
@@ -67,10 +91,11 @@ input[type="text"] {
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 30px;
+  background-color: white;
 }
 #inputTypeSelect{
   height:calc(3em + 0.5vw);
-  background-color: rgb(155, 204, 204);
+  background-color: rgb(120, 134, 199);
   border-radius: 10px;
   font-size: 1em;
 }
@@ -82,6 +107,7 @@ input[type="text"] {
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 30px;
+  background-color: white;
 }
 
 .button-container{
@@ -92,7 +118,7 @@ input[type="text"] {
 }
 
 .button-container button{
-  background-color: rgb(155, 204, 204);
+  background-color:  rgb(120, 134, 199);
 }
 
 /* Responsive Design for Mobile */
