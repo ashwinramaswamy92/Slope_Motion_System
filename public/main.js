@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const socket = io();
     Chart.defaults.font.size = 18;
     const mainChartCtx = document.getElementById('mainChart').getContext('2d');
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener to the input field for Y-axis max value
     const yMaxInput = document.getElementById('yMaxInput');
-    yMaxInput.addEventListener('input', function() {
+    yMaxInput.addEventListener('input', function () {
         const newYMax = parseFloat(yMaxInput.value);
         if (!isNaN(newYMax)) {
             mainChart.options.scales.y.max = newYMax;
@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Adding data points or function values
     const addDataButton = document.getElementById('addDataButton');
+    const downloadDataButton = document.getElementById('downloadDataButton')
     const dataPointsInput = document.getElementById('dataPointsInput');
     const functionInput = document.getElementById('functionInput');
 
@@ -191,5 +192,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+    });
+
+    // To save the data in an excel sheet
+    downloadDataButton.addEventListener('click', () => {
+        const workbook = new ExcelJS.Workbook();
+        const worksheet_data = workbook.addWorksheet('Data Points');
+        console.log(mainData)
+
+        // Add headers to the worksheet
+        worksheet_data.columns = [
+            { header: 'Labels', key: 'labels', width: 10 },
+            { header: 'Steps: X', key: 'x', width: 10 },
+            { header: 'Steps: Y', key: 'y', width: 10 },
+        ];
+        // Add data points to the worksheet
+        mainData.datasets.forEach(dataset => {
+            dataset.data.forEach(point => {
+                worksheet_data.addRow({
+                    labels: point.labels, x: point.userSteps.x, y: point.userSteps.y
+                });
+            }); 
+        });
+
+        // Save the workbook to a buffer and trigger a download
+        workbook.xlsx.writeBuffer().then(buffer => {
+            const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data-points.xlsx';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
     });
 });
