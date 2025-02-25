@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
         mainData.datasets.forEach(dataset => {
             dataset.data.forEach(point => {
                 worksheet_data.addRow({
-                    labels: point.labels, x: point.x, y: point.y
+                    labels: dataset.labels, x: point.x, y: point.y
                 });
             }); 
         });
