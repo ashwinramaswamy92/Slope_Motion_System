@@ -12,6 +12,11 @@ const MAX_USERS_PER_CLASSROOM = 10;
 
 var userData = {};
 
+// Route to serve login.html as the landing (starting) page
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/login.html");
+});
+
 app.use(express.static("public"));
 
 io.on("connection", (socket) => {
