@@ -52,6 +52,23 @@
       justify-content: center;
       align-items: center;
     }
+    /* Responsive styles for phones */
+    @media (max-width: 768px) {
+    .login-container {
+        padding: 20px; /* Smaller padding for phones */
+        font-size: 20px; /* Smaller font size for phones */
+        }
+    button {
+        font-size: 16px; /* Adjusted button font size for phones */
+        padding: 8px 16px;
+        }
+    #password-popup {
+        font-size: 18px; /* Smaller popup text for phones */
+        }
+    #popup{
+        padding: 30px;
+    }
+    }
   </style>
   <script>
     // Utility function to flash the background color
@@ -109,8 +126,8 @@
     <button onclick="openMode('teacher')">Teacher Mode</button>
   </div>
   <div id="password-popup">
-    <div style="background-color:rgb(45, 51, 107); padding:20px; border-radius:8px; text-align:center;">
-      <h2>Enter Teacher Password</h2>
+    <div id ="popup" style="background-color:rgb(45, 51, 107); padding:60px; border-radius:8px; text-align:center;">
+      <h2>Enter Password</h2>
       <input type="password" id="password-input" style="padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
       <p id="password-message" style="height:20px;"></p>
       <button onclick="checkPassword()">Submit</button>
