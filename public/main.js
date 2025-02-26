@@ -63,24 +63,46 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Listen for the server's response with all data
-  socket.on("allDataResponse", (data) => {
-    // Convert the data to CSV format
-    const dataArray = Array.isArray(data) ? data : Object.values(data);
-    const csvData = convertToCSV(dataArray);
+  // socket.on("allDataResponse", (data) => {
+  //   // Convert the data to CSV format
+  //   const dataArray = Array.isArray(data) ? data : Object.values(data);
+  //   const csvData = convertToCSV(dataArray);
 
-    // Create a Blob and trigger a download
-    const blob = new Blob([csvData], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "user_data.csv"; // File name for the downloaded CSV
-    a.click();
-    URL.revokeObjectURL(url);
-  });
+  //   // Create a Blob and trigger a download
+  //   const blob = new Blob([csvData], { type: "text/csv" });
+  //   const url = URL.createObjectURL(blob);
+  //   const a = document.createElement("a");
+  //   a.href = url;
+  //   a.download = "user_data.csv"; // File name for the downloaded CSV
+  //   a.click();
+  //   URL.revokeObjectURL(url);
+  // });
+
+  // Function to convert data to CSV format
+  // function convertToCSV(data) {
+  //   const headers = ["User", "Time (ms)", "Movement Count"]; // CSV headers
+  //   const rows = [];
+
+  //   // Loop through each user's data
+  //   data.forEach((user) => {
+  //     const userID = user.user; // User identifier (e.g., socket ID)
+  //     const labels = user.data.labels; // Time values (x-axis)
+  //     const userSteps = user.data.userSteps; // Movement counts (y-axis)
+
+  //     // Add each data point as a row in the CSV
+  //     labels.forEach((time, index) => {
+  //       const movementCount = userSteps[index].y; // Get the corresponding movement count
+  //       rows.push([userID, time, movementCount].join(",")); // Create a CSV row
+  //     });
+  //   });
+
+  //   // Combine headers and rows into a single CSV string
+  //   return [headers.join(","), ...rows].join("\n");
+  // }
 
   // Function to convert data to CSV format
   function convertToCSV(data) {
-    const headers = ["User", "Time (ms)", "Movement Count"]; // CSV headers
+    const headers = ["User", "Time (ms)", "Movement Count"];
     const rows = [];
 
     // Loop through each user's data
@@ -91,14 +113,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Add each data point as a row in the CSV
       labels.forEach((time, index) => {
-        const movementCount = userSteps[index].y; // Get the corresponding movement count
-        rows.push([userID, time, movementCount].join(",")); // Create a CSV row
+        const movementCount = userSteps[index]?.y || 0; // Handle missing data
+        rows.push([userID, time, movementCount].join(","));
       });
     });
 
     // Combine headers and rows into a single CSV string
     return [headers.join(","), ...rows].join("\n");
   }
+
+  // Function to download the chart as an image
+  function downloadChartImage(chart) {
+    // Get the chart as a base64 image
+    const image = chart.toBase64Image();
+
+    // Create a link element to trigger the download
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "graph_image.png"; // File name for the downloaded image
+    link.click();
+  }
+
+  // Event listener for the "Download Data" button
+  socket.on("allDataResponse", (data) => {
+    // Convert the data to CSV format
+    const csvData = convertToCSV(data);
+
+    // Create a Blob for the CSV and trigger a download
+    const csvBlob = new Blob([csvData], { type: "text/csv" });
+    const csvUrl = URL.createObjectURL(csvBlob);
+    const csvLink = document.createElement("a");
+    csvLink.href = csvUrl;
+    csvLink.download = "user_data.csv";
+    csvLink.click();
+    URL.revokeObjectURL(csvUrl);
+
+    // Download the chart as an image
+    downloadChartImage(mainChart);
+  });
 
   inputTypeSelect.addEventListener("change", () => {
     if (inputTypeSelect.value === "points") {
