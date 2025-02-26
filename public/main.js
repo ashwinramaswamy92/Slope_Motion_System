@@ -62,43 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     socket.emit("requestAllData"); // Request all data from the server
   });
 
-  // Listen for the server's response with all data
-  // socket.on("allDataResponse", (data) => {
-  //   // Convert the data to CSV format
-  //   const dataArray = Array.isArray(data) ? data : Object.values(data);
-  //   const csvData = convertToCSV(dataArray);
-
-  //   // Create a Blob and trigger a download
-  //   const blob = new Blob([csvData], { type: "text/csv" });
-  //   const url = URL.createObjectURL(blob);
-  //   const a = document.createElement("a");
-  //   a.href = url;
-  //   a.download = "user_data.csv"; // File name for the downloaded CSV
-  //   a.click();
-  //   URL.revokeObjectURL(url);
-  // });
-
-  // Function to convert data to CSV format
-  // function convertToCSV(data) {
-  //   const headers = ["User", "Time (ms)", "Movement Count"]; // CSV headers
-  //   const rows = [];
-
-  //   // Loop through each user's data
-  //   data.forEach((user) => {
-  //     const userID = user.user; // User identifier (e.g., socket ID)
-  //     const labels = user.data.labels; // Time values (x-axis)
-  //     const userSteps = user.data.userSteps; // Movement counts (y-axis)
-
-  //     // Add each data point as a row in the CSV
-  //     labels.forEach((time, index) => {
-  //       const movementCount = userSteps[index].y; // Get the corresponding movement count
-  //       rows.push([userID, time, movementCount].join(",")); // Create a CSV row
-  //     });
-  //   });
-
-  //   // Combine headers and rows into a single CSV string
-  //   return [headers.join(","), ...rows].join("\n");
-  // }
 
   // Function to convert data to CSV format
   function convertToCSV(data) {
