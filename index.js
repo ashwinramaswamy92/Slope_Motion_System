@@ -99,7 +99,13 @@ io.on("connection", (socket) => {
 
   // Send all collected data to the client
   socket.on("requestAllData", () => {
-    socket.emit("allDataResponse", userData);
+    // Convert userData (object) to an array of user entries
+    const aggregatedData = Object.values(userData).map((user) => ({
+      user: user.user,
+      data: user.data,
+    }));
+
+    socket.emit("allDataResponse", aggregatedData); // Send an array
   });
 
   socket.on("clearData", () => {

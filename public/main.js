@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Listen for the server's response with all data
   socket.on("allDataResponse", (data) => {
     // Convert the data to CSV format
-    const csvData = convertToCSV(data);
+    const dataArray = Array.isArray(data) ? data : Object.values(data);
+    const csvData = convertToCSV(dataArray);
 
     // Create a Blob and trigger a download
     const blob = new Blob([csvData], { type: "text/csv" });
