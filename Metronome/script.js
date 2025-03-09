@@ -90,10 +90,14 @@ const chartBPM = new Chart(ctxBPM, {
   },
 });
 
-// Update BPM display
+// Update BPM display and animation speed
 bpmSlider.addEventListener("input", () => {
   bpmValue.textContent = bpmSlider.value;
   bpmInput.value = bpmSlider.value; // Update input field
+  
+  // Update metronome animation speed based on BPM.
+  // Here, we set the swing duration to (60 / BPM) seconds.
+  document.documentElement.style.setProperty('--swing-duration', (60 / bpmSlider.value) + 's');
 
   // If metronome is running, restart with the new BPM
   if (intervalId) {
@@ -107,29 +111,29 @@ bpmSlider.addEventListener("input", () => {
 // Update slider and BPM value when typing in the input field
 bpmInput.addEventListener("input", () => {
   const value = bpmInput.value;
-
-  // Allow only numbers between 40 and 200
   if (!isNaN(value) && value >= 40 && value <= 200) {
     bpmSlider.value = value; // Update slider position
     bpmValue.textContent = value; // Update BPM label
 
-    // If metronome is running, restart with the new BPM
+    // Update metronome animation speed
+    document.documentElement.style.setProperty('--swing-duration', (60 / value) + 's');
+
     if (intervalId) {
       clearInterval(intervalId);
-      const bpm = bpmInput.value;
+      const bpm = value;
       const interval = 60000 / bpm;
       drawMetronome(interval, startTime);
     }
   } else if (value === "") {
-    bpmSlider.value = 60; // Reset if input is empty
+    bpmSlider.value = 60;
     bpmValue.textContent = 60;
+    document.documentElement.style.setProperty('--swing-duration', (60 / 60) + 's');
   }
 });
 
 // Start the metronome
 startBtn.addEventListener("click", () => {
   if (intervalId) return;
-
   const bpm = bpmSlider.value;
   const interval = 60000 / bpm;
   cumulativeBeats = 0;
@@ -156,18 +160,15 @@ function playTone(frequency, duration) {
   const oscillator = audioContext.createOscillator();
   const gainNode = audioContext.createGain(); 
 
-  oscillator.type = "sine"; //triangle or square can also be used
-  oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime); // Set frequency
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
   oscillator.connect(gainNode); 
   gainNode.connect(audioContext.destination); 
 
   oscillator.start();
 
   gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
-  gainNode.gain.linearRampToValueAtTime(
-    0,
-    audioContext.currentTime + duration / 1000
-  );
+  gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + duration / 1000);
   setTimeout(() => oscillator.stop(), duration);
 }
 
@@ -185,14 +186,13 @@ function drawMetronome(interval, startTime) {
     updateGraphBeats();
     updateGraphBPM();
 
-    playTone(440, 150); // Plays a 440Hz tone for 100ms
+    playTone(440, 150);
   }, interval);
 }
 
 // Stop the metronome
 stopBtn.addEventListener("click", () => {
   if (!intervalId) return;
-
   clearInterval(intervalId);
   intervalId = null;
 });

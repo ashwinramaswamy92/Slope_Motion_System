@@ -17,6 +17,9 @@ body {
   width: 100%;
   max-width: 1200px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Header styling */
@@ -133,4 +136,43 @@ canvas {
     width: 90%;
     height: auto;
   }
+}
+
+/* Metronome container */
+#metronome-animation {
+  position: relative;
+  width: 200px;  
+  height: 200px; 
+  margin: 20px auto;
+}
+
+/* The main triangular body of the metronome */
+#triangle-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 200px solid #ccc; 
+}
+
+/* The pendulum (stick) that swings from the bottom */
+.pendulum {
+  width: 4px;               
+  height: 120px;            
+  background-color: #4caf50; /* Stick color */
+  position: absolute;
+  bottom: 50px;                /* Anchored to the bottom of the container */
+  left: calc(50% - 2px);     /* Centered horizontally (half of 4px is 2px) */
+  transform-origin: bottom center; /* Pivot from the bottom */
+  animation: swing var(--swing-duration, 1s) ease-in-out infinite;
+}
+
+/* Keyframes for the swinging motion */
+@keyframes swing {
+  0%   { transform: rotate(-20deg); }
+  50%  { transform: rotate(20deg); }
+  100% { transform: rotate(-20deg); }
 }
