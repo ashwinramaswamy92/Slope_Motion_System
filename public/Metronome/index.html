@@ -13,16 +13,20 @@
         <label for="bpm-slider">BPM: <span id="bpm-value">60</span></label>
         <input type="range" id="bpm-slider" min="40" max="200" value="60" />
         <input type="text" id="bpm-input" min="40" max="200" value="60" />
-        <button id="start-btn">Start</button>
-        <button id="stop-btn">Stop</button>
+        <div class="button-container">
+          <button id="start-btn">Start</button>
+          <button id="stop-btn">Stop</button>
+        </div>
       </div>
       
-      <!-- New animated metronome element -->
-      <div id="metronome-animation">
-        <!-- Triangle body -->
-        <div id="triangle-body"></div>
-        <!-- Pendulum (the swinging stick) -->
-        <div class="pendulum"></div>
+      <div class="metronome-container">
+        <!-- New animated metronome element -->
+        <div id="metronome-animation">
+          <!-- Triangle body -->
+          <div id="triangle-body"></div>
+          <!-- Pendulum (the swinging stick) -->
+          <div class="pendulum"></div>
+        </div>
       </div>
 
       <div style="position: relative; height: 45vh; width: 90vw" class="container">
