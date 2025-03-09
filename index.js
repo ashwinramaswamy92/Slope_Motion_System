@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/home.html");
 });
 
-app.use(express.static("public"));
+app.use(express.static("Slope_Motion_System"));
 
 io.on("connection", (socket) => {
   console.log("New client connected");
