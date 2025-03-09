@@ -129,37 +129,6 @@ canvas {
   border-radius: 8px;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  #controls {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  input[type="range"] {
-    width: 80%;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 8px 15px;
-  }
-
-  canvas {
-    width: 90%;
-    height: auto;
-  }
-}
-
-
 .metronome-container {
   padding: 10px 120px;
   background-color:rgba(45, 51, 107, 0.898);
@@ -208,4 +177,67 @@ canvas {
   0%   { transform: rotate(-20deg); }
   50%  { transform: rotate(20deg); }
   100% { transform: rotate(-20deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .control-display {
+    flex-direction: column;
+    width: 90%;
+    padding: 20px;
+    align-items: center;
+  }
+
+  #controls {
+    width: 80%;
+    max-width: 80%;
+  }
+
+  input[type="range"] {
+    width: 90%;
+  }
+
+  button {
+    font-size: 24px;
+    padding: 8px 15px;
+  }
+
+  .button-container {
+    flex-direction: column; 
+    gap:1px;
+  }
+
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  .metronome-container {
+    padding: 10px;
+    width: 90%;
+    max-width: 100%;
+  }
+
+  #metronome-animation {
+    width: 150px;
+    height: 150px;
+  }
+
+  #triangle-body {
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-bottom: 150px solid rgb(120, 134, 199);
+  }
+
+  .pendulum {
+    height: 90px;
+  }
 }
