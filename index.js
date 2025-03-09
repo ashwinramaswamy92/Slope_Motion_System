@@ -14,7 +14,7 @@ var userData = {};
 
 // Route to serve login.html as the landing (starting) page
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/login.html");
+  res.sendFile(__dirname + "/public/home.html");
 });
 
 app.use(express.static("public"));
