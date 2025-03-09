@@ -14,10 +14,10 @@ var userData = {};
 
 // Route to serve login.html as the landing (starting) page
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/home.html");
+  res.sendFile(__dirname + "/public/home.html");
 });
 
-app.use(express.static("Slope_Motion_System"));
+app.use(express.static("public"));
 
 io.on("connection", (socket) => {
   console.log("New client connected");
