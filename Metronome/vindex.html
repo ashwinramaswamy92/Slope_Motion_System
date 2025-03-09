@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Acceleration and Velocity Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      #myChart,
+      #velocityChart {
+        width: 80%;
+        height: 400px;
+        margin: 20px auto;
+      }
+      #dataCount {
+        font-size: 18px;
+        margin-bottom: 20px;
+        white-space: pre-line; /* Ensures newline (\n) is interpreted as line break */
+        text-align: left; /* Aligns text to the left for readability */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Acceleration Graph</h1>
+    <div id="dataCount">Data Points:</div>
+    <canvas id="myChart"></canvas>
+    <h1>Velocity Graph</h1>
+    <canvas id="velocityChart"></canvas>
+    <button id="startButton">Start Collecting Data for 30s</button>
+    <script src="script.js"></script>
+  </body>
+</html>

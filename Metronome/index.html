@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metronome with Graphs</title>
+    <style>
+      body {
+        font-family: monospace;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      canvas {
+        margin-top: 20px;
+      }
+      #controls {
+        display: flex;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Metronome</h1>
+      <div id="controls">
+        <label for="bpm-slider">BPM: <span id="bpm-value">60</span></label>
+        <input type="range" id="bpm-slider" min="40" max="200" value="60" />
+        <input type="text" id="bpm-input" min="40" max="200" value="60" />
+        <button id="start-btn">Start</button>
+        <button id="stop-btn">Stop</button>
+      </div>
+      <div
+        style="position: relative; height: 45vh; width: 90vw"
+        class="container"
+      >
+        <canvas id="graph-beats"></canvas>
+      </div>
+      <div
+        style="position: relative; height: 45vh; width: 90vw"
+        class="container"
+      >
+        <canvas id="graph-bpm"></canvas>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </body>
+</html>
