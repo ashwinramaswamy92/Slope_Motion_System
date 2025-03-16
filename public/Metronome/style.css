@@ -10,6 +10,10 @@ body {
   min-height: 100vh;
   flex-direction: column;
 }
+html, body {
+  overflow-x: hidden;
+}
+
 .control-display{
   display: flex;
   flex-direction: column;
@@ -237,9 +241,9 @@ canvas {
   }
   canvas {
     height: auto;
-    max-width: 50%;
+    max-width: 55%;
     margin-left: -40px;
-    width: 50%;
+    width: 55%;
   
   }
 
