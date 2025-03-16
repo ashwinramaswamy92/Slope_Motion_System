@@ -186,16 +186,19 @@ document.addEventListener("DOMContentLoaded", function () {
               };
               steps.push(step);
           }
+
       }
 
+      let lastX = data.labels[data.labels.length - 1]; // Last x value
+      let lastY = xData[xData.length - 1]; // Last y value (acceleration)
+      
+      if (lastX < 30000) {
+              data.labels.push(30000);
+              data.datasets[0].data.push({ x: 30000, y: lastY });
+      }
       // Update step count display
       stepCountElement.textContent = `Step Count: ${steps.length / 2}`;
 
-      // Display all components of each step in stepCountElement
-      // stepCountElement.textContent += '\nSteps Array:\n';
-      // steps.forEach((step, index) => {
-      //     stepCountElement.textContent += `Step ${index + 1}: Time=${step.time}, Acceleration=${step.acceleration}\n`;
-      // });
 
       // Draw steps chart
       drawStepsChart();
@@ -283,11 +286,6 @@ document.addEventListener("DOMContentLoaded", function () {
     data.datasets.forEach(dataset => dataset.data = []);
     myChart.update();
 
-    // if (stepsChart) {
-    //     stepsChart.data.labels = [];
-    //     stepsChart.data.datasets.forEach(dataset => dataset.data = []);
-    //     stepsChart.update();
-    // }
     if (stepsChart) {
         stepsChart.destroy();
         stepsChart = null;  // Reset the reference to ensure a new instance is created
