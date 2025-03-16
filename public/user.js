@@ -283,10 +283,14 @@ document.addEventListener("DOMContentLoaded", function () {
     data.datasets.forEach(dataset => dataset.data = []);
     myChart.update();
 
+    // if (stepsChart) {
+    //     stepsChart.data.labels = [];
+    //     stepsChart.data.datasets.forEach(dataset => dataset.data = []);
+    //     stepsChart.update();
+    // }
     if (stepsChart) {
-        stepsChart.data.labels = [];
-        stepsChart.data.datasets.forEach(dataset => dataset.data = []);
-        stepsChart.update();
+        stepsChart.destroy();
+        stepsChart = null;  // Reset the reference to ensure a new instance is created
     }
     steps = [];
 
