@@ -45,6 +45,48 @@ document.addEventListener("DOMContentLoaded", function () {
     "rgba(255, 0, 255, 1)",
   ];
 
+  const names = [
+    "Penguin",
+    "Tortoise",
+    "Fox",
+    "Dog",
+    "Cat",
+    "Bat",
+    "Bull",
+    "Chicken",
+    "Horse",
+    "Lizard",
+    "Goat",
+    "Kangaroo",
+    "Rabbit",
+    "Deer",
+    "Cheetah",
+    "Zebra",
+    "Elephant",
+    "Leopard",
+    "Tiger",
+    "Wolf",
+    "Dolphin",
+    "Panda",
+    "Owl",
+    "Hedgehog",
+    "Squirrel"
+  ];
+
+  let randomNames=null;
+
+  function shuffleNames(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+  }
+  
+  function getName(index){
+    return names[index % names.length];
+  }
+
   // Function to get a color from the predefined set
   function getColor(index) {
     return colors[index % colors.length];
@@ -144,13 +186,14 @@ document.addEventListener("DOMContentLoaded", function () {
     mainData.labels = data.labels;
 
     // Get a color from the predefined set
-    const colorIndex = mainData.datasets.length;
-    const borderColor = getColor(colorIndex);
+    const currIndex = mainData.datasets.length;
+    const borderColor = getColor(currIndex);
+    const currName = getName(currIndex);
     const backgroundColor = borderColor.replace(", 1)", ", 0.2)");
 
     // Add the new dataset
     mainData.datasets.push({
-      label: `User ${mainData.datasets.length + 1}`,
+      label: currName,
       borderColor: borderColor,
       backgroundColor: backgroundColor,
       data: data.userSteps,
@@ -167,6 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
   generateCodeButton.addEventListener("click", () => {
     generateCodeButton.style.display = "none";
     generateCodeButton.style.fontSize = "0px";
+    randomNames=shuffleNames(names);
     socket.emit("createClassroom"); // Request server to create a classroom
   });
 
