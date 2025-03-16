@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   function getName(index){
-    return names[index % names.length];
+    return randomNames[index % names.length];
   }
 
   // Function to get a color from the predefined set
