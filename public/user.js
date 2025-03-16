@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
     };
   
-    // Global variable to hold the steps chart instance
-    let stepsChart = null;
+    // Global variable for the steps chart so it can be accessed in refresh
+    let stepsChart;
     let steps = [];
   
     const config = {
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Update step count display
         stepCountElement.textContent = `Step Count: ${steps.length / 2}`;
   
-        // Draw the steps chart with the updated steps array
+        // Draw steps chart with updated steps data
         drawStepsChart();
     }
   
@@ -209,12 +209,12 @@ document.addEventListener("DOMContentLoaded", function () {
   
         const stepsChartCtx = document.getElementById("stepsChart").getContext("2d");
   
-        // If the chart exists, update its data; otherwise, create it
+        // If the stepsChart already exists, update its data; otherwise, create it.
         if (stepsChart) {
             stepsChart.data = stepsData;
             stepsChart.update();
         } else {
-            stepsChart = new Chart(stepsChartCtx, {
+            const stepsConfig = {
                 type: "line",
                 data: stepsData,
                 options: {
@@ -240,10 +240,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         },
                     },
                 },
-            });
+            };
+            stepsChart = new Chart(stepsChartCtx, stepsConfig);
         }
   
-        // Add event listener to the input field for adjusting the y-axis maximum
+        // Add event listener to adjust the y-axis maximum
         const yMaxInput = document.getElementById("yMaxInput");
         yMaxInput.addEventListener("input", function () {
             const newYMax = parseFloat(yMaxInput.value);
@@ -263,19 +264,29 @@ document.addEventListener("DOMContentLoaded", function () {
         sendGraphData();
     });
   
-    // Refresh data button event listener
+    // Refresh Data Button modifications:
     const refreshDataButton = document.getElementById("refreshDataButton");
     refreshDataButton.addEventListener("click", () => {
+      // Clear the main chart data (used for collecting points)
+      data.labels = [];
+      data.datasets.forEach(dataset => dataset.data = []);
+      myChart.update();
+  
       // Clear the steps chart data if it exists
       if (stepsChart) {
           stepsChart.data.labels = [];
           stepsChart.data.datasets.forEach(dataset => dataset.data = []);
           stepsChart.update();
       }
-      // Clear the steps array to allow for new data collection
+  
+      // Reset the steps array for new data collection
       steps = [];
+  
       // Optionally, notify the server to clear stored data
       socket.emit("clearData");
+  
+      // Re-enable the send button (removing the lock)
+      sendButton.disabled = false;
     });
   
     function sendGraphData() {
@@ -289,8 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const classroomCode = classroomCodeInput.value.trim();
         if (classroomCode) {
             socket.emit("sendGraphData", { classroomCode, graphData });
-            const sendButton = document.getElementById("sendButton");
-            sendButton.disabled = true; // Disable the button after it's clicked once
+            // Removed the disabling of the send button so it doesn't lock after sending.
         } else {
             alert("Please join a classroom first.");
         }
