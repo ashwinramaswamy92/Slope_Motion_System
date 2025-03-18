@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
               scales: {
                   x: {
                       min: 0,
-                      max: 30000,
+                      max: 35000,
                       type: "linear",
                       position: "bottom",
                       title: {
