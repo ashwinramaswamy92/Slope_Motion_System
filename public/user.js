@@ -155,8 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //       }
 //   }
 
-  let lastMovementTime = 0; 
-
 function startDataCollection() {
     startTime = new Date().getTime();
     isCollectingData = true;
@@ -189,8 +187,6 @@ function collectData(event) {
                 return;
             }
 
-            lastMovementTime = new Date().getTime();
-
             data.labels.push(currentTime);
             data.datasets[0].data.push({
                 x: currentTime,
@@ -212,7 +208,6 @@ function collectData(event) {
         }
     }
 }
-
 
 function stopDataCollection() {
     isCollectingData = false;
