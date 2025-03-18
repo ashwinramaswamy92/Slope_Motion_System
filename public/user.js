@@ -101,59 +101,135 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  function startDataCollection() {
-      startTime = new Date().getTime();
-      isCollectingData = true;
-      dataPointCount = 0;
-      data.labels = [];
-      data.datasets.forEach((dataset) => {
-          dataset.data = [];
-      });
-      updateDataCount();
-      stepCountElement.textContent = "Step Count: 0";
+//   function startDataCollection() {
+//       startTime = new Date().getTime();
+//       isCollectingData = true;
+//       dataPointCount = 0;
+//       data.labels = [];
+//       data.datasets.forEach((dataset) => {
+//           dataset.data = [];
+//       });
+//       updateDataCount();
+//       stepCountElement.textContent = "Step Count: 0";
 
-      setTimeout(stopDataCollection, 30000);
+//       setTimeout(stopDataCollection, 30000);
 
-      window.addEventListener("devicemotion", collectData);
-  }
+//       window.addEventListener("devicemotion", collectData);
+//   }
 
-  function stopDataCollection() {
-      isCollectingData = false;
-      window.removeEventListener("devicemotion", collectData);
-      countSteps();
-  }
+//   function stopDataCollection() {
+//       isCollectingData = false;
+//       window.removeEventListener("devicemotion", collectData);
+//       countSteps();
+//   }
 
-  function collectData(event) {
-      if (isCollectingData) {
-          const acceleration = event.accelerationIncludingGravity;
-          if (acceleration) {
-              const currentTime = new Date().getTime() - startTime;
-              if (currentTime > 30000) {
-                  stopDataCollection();
-                  return;
-              }
+//   function collectData(event) {
+//       if (isCollectingData) {
+//           const acceleration = event.accelerationIncludingGravity;
+//           if (acceleration) {
+//               const currentTime = new Date().getTime() - startTime;
+//               if (currentTime > 30000) {
+//                   stopDataCollection();
+//                   return;
+//               }
 
-              data.labels.push(currentTime);
-              data.datasets[0].data.push({
-                  x: currentTime,
-                  y: acceleration.x,
-              });
-              data.datasets[1].data.push({
-                  x: currentTime,
-                  y: acceleration.y,
-              });
-              data.datasets[2].data.push({
-                  x: currentTime,
-                  y: acceleration.z,
-              });
+//               data.labels.push(currentTime);
+//               data.datasets[0].data.push({
+//                   x: currentTime,
+//                   y: acceleration.x,
+//               });
+//               data.datasets[1].data.push({
+//                   x: currentTime,
+//                   y: acceleration.y,
+//               });
+//               data.datasets[2].data.push({
+//                   x: currentTime,
+//                   y: acceleration.z,
+//               });
 
-              dataPointCount++;
-              updateDataCount();
+//               dataPointCount++;
+//               updateDataCount();
 
-              myChart.update();
-          }
-      }
-  }
+//               myChart.update();
+//           }
+//       }
+//   }
+
+  let lastMovementTime = 0; 
+
+function startDataCollection() {
+    startTime = new Date().getTime();
+    isCollectingData = true;
+    dataPointCount = 0;
+    data.labels = [];
+    data.datasets.forEach((dataset) => {
+        dataset.data = [];
+    });
+
+    data.labels.push(0);
+    data.datasets[0].data.push({ x: 0, y: 0 });
+    data.datasets[1].data.push({ x: 0, y: 0 });
+    data.datasets[2].data.push({ x: 0, y: 0 });
+
+    updateDataCount();
+    stepCountElement.textContent = "Step Count: 0";
+
+    setTimeout(stopDataCollection, 30000);
+
+    window.addEventListener("devicemotion", collectData);
+}
+
+function collectData(event) {
+    if (isCollectingData) {
+        const acceleration = event.accelerationIncludingGravity;
+        if (acceleration) {
+            const currentTime = new Date().getTime() - startTime;
+            if (currentTime > 30000) {
+                stopDataCollection();
+                return;
+            }
+
+            lastMovementTime = new Date().getTime();
+
+            data.labels.push(currentTime);
+            data.datasets[0].data.push({
+                x: currentTime,
+                y: acceleration.x,
+            });
+            data.datasets[1].data.push({
+                x: currentTime,
+                y: acceleration.y,
+            });
+            data.datasets[2].data.push({
+                x: currentTime,
+                y: acceleration.z,
+            });
+
+            dataPointCount++;
+            updateDataCount();
+
+            myChart.update();
+        }
+    }
+}
+
+
+function stopDataCollection() {
+    isCollectingData = false;
+    window.removeEventListener("devicemotion", collectData);
+
+    const lastTime = data.labels[data.labels.length - 1];
+    if (lastTime < 30000) {
+        data.labels.push(30000);
+        data.datasets[0].data.push({ x: 30000, y: data.datasets[0].data[data.datasets[0].data.length - 1].y });
+        data.datasets[1].data.push({ x: 30000, y: data.datasets[1].data[data.datasets[1].data.length - 1].y });
+        data.datasets[2].data.push({ x: 30000, y: data.datasets[2].data[data.datasets[2].data.length - 1].y });
+        myChart.update();
+    }
+
+    countSteps();
+}
+
 
   function updateDataCount() {
       dataCountElement.textContent = `Data Points:\n${dataPointCount}\n`;
@@ -233,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
               scales: {
                   x: {
                       min: 0,
-                      max: 35000,
+                      max: 30000,
                       type: "linear",
                       position: "bottom",
                       title: {
