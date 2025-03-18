@@ -66,9 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
   
     const dataCountElement = document.getElementById("dataCount");
     const stepCountElement = document.getElementById("stepCount");
+    const countdownElement = document.getElementById("countdown");
     let dataPointCount = 0;
-    var startTime = 0;
+    let startTime = 0;
     let isCollectingData = false;
+    let intervalId;
   
     const startButton = document.getElementById("startButton");
     startButton.addEventListener("click", startDataCollection);
@@ -98,61 +100,91 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     function startDataCollection() {
-        startTime = new Date().getTime();
-        isCollectingData = false; // Initially set to false
-        dataPointCount = 0;
+        // Reset data and steps
         data.labels = [];
         data.datasets.forEach((dataset) => {
             dataset.data = [];
         });
+        steps = [];
+        dataPointCount = 0;
         updateDataCount();
         stepCountElement.textContent = "Step Count: 0";
   
-        // Start data collection after 5 seconds
-        setTimeout(() => {
-            isCollectingData = true;
-            window.addEventListener("devicemotion", collectData);
-        }, 5000);
+        // Start 5-second countdown
+        let countdown = 5;
+        countdownElement.textContent = `Starting in: ${countdown} seconds`;
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = `Starting in: ${countdown} seconds`;
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                countdownElement.textContent = "Collecting data...";
+                startTime = new Date().getTime();
+                isCollectingData = true;
   
-        // Stop data collection after 30 seconds (including the 5-second delay)
-        setTimeout(stopDataCollection, 35000);
+                // Start collecting data for 30 seconds
+                intervalId = setInterval(collectData, 100); // Collect data every 100ms
+                setTimeout(stopDataCollection, 30000); // Stop after 30 seconds
+            }
+        }, 1000);
     }
   
     function stopDataCollection() {
         isCollectingData = false;
-        window.removeEventListener("devicemotion", collectData);
+        clearInterval(intervalId); // Stop the data collection interval
         countSteps();
+        countdownElement.textContent = "Data collection complete.";
     }
   
-    function collectData(event) {
+    function collectData() {
         if (isCollectingData) {
-            const acceleration = event.accelerationIncludingGravity;
-            if (acceleration) {
-                const currentTime = new Date().getTime() - startTime;
-                if (currentTime > 30000) {
-                    stopDataCollection();
-                    return;
-                }
+            const currentTime = new Date().getTime() - startTime;
   
-                data.labels.push(currentTime);
-                data.datasets[0].data.push({
-                    x: currentTime,
-                    y: acceleration.x,
-                });
-                data.datasets[1].data.push({
-                    x: currentTime,
-                    y: acceleration.y,
-                });
-                data.datasets[2].data.push({
-                    x: currentTime,
-                    y: acceleration.z,
-                });
+            // Simulate data collection even if no motion is detected
+            const acceleration = {
+                x: 0, // Default to 0 if no motion
+                y: 0,
+                z: 0,
+            };
   
-                dataPointCount++;
-                updateDataCount();
-  
-                myChart.update();
+            // If motion is detected, update acceleration values
+            if (window.DeviceMotionEvent && typeof window.DeviceMotionEvent.requestPermission === 'function') {
+                window.DeviceMotionEvent.requestPermission().then(permissionState => {
+                    if (permissionState === 'granted') {
+                        window.addEventListener('devicemotion', (event) => {
+                            acceleration.x = event.accelerationIncludingGravity.x || 0;
+                            acceleration.y = event.accelerationIncludingGravity.y || 0;
+                            acceleration.z = event.accelerationIncludingGravity.z || 0;
+                        });
+                    }
+                });
+            } else {
+                // For browsers that don't require permission
+                window.addEventListener('devicemotion', (event) => {
+                    acceleration.x = event.accelerationIncludingGravity.x || 0;
+                    acceleration.y = event.accelerationIncludingGravity.y || 0;
+                    acceleration.z = event.accelerationIncludingGravity.z || 0;
+                });
             }
+  
+            // Add data points to the chart
+            data.labels.push(currentTime);
+            data.datasets[0].data.push({
+                x: currentTime,
+                y: acceleration.x,
+            });
+            data.datasets[1].data.push({
+                x: currentTime,
+                y: acceleration.y,
+            });
+            data.datasets[2].data.push({
+                x: currentTime,
+                y: acceleration.z,
+            });
+  
+            dataPointCount++;
+            updateDataCount();
+            myChart.update();
         }
     }
   
@@ -167,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Use X-axis acceleration for step detection
         const xData = data.datasets[0].data.map((point) => point.y);
   
-        for (let i = windowSize; i < xData.length; i++) { // Changed to iterate till the end
+        for (let i = windowSize; i < xData.length; i++) {
             let isPeak = true;
   
             // Check if xData[i] is higher than the previous and next windowSize points
