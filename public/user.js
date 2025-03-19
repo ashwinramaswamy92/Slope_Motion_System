@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const dataCountElement = document.getElementById("dataCount");
     const stepCountElement = document.getElementById("stepCount");
-    const countdownElement = document.getElementById("countdown"); // Added for countdown
+    const countdownElement = document.getElementById("countdown");
 
     let dataPointCount = 0;
     var startTime = 0;
@@ -66,28 +66,33 @@ document.addEventListener("DOMContentLoaded", function () {
     startButton.addEventListener("click", startDataCollection);
 
     function startDataCollection() {
-        // 5-second countdown before starting data collection
+        // Reset data and steps
+        data.labels = [];
+        data.datasets.forEach((dataset) => {
+            dataset.data = [];
+        });
+        dataPointCount = 0;
+        updateDataCount();
+        stepCountElement.textContent = "Step Count: 0";
+
+        // Start 5-second countdown
         let countdown = 5;
         countdownElement.style.display = "block";
+        countdownElement.textContent = `Starting in ${countdown}...`;
 
         const countdownInterval = setInterval(() => {
-            countdownElement.textContent = `Starting in ${countdown}...`;
             countdown--;
-            if (countdown < 0) {
+            countdownElement.textContent = `Starting in ${countdown}...`;
+
+            if (countdown <= 0) {
                 clearInterval(countdownInterval);
                 countdownElement.style.display = "none";
 
                 // Start data collection after countdown
                 startTime = new Date().getTime();
                 isCollectingData = true;
-                dataPointCount = 0;
-                data.labels = [];
-                data.datasets.forEach((dataset) => {
-                    dataset.data = [];
-                });
-                updateDataCount();
-                stepCountElement.textContent = "Step Count: 0";
 
+                // Collect data for 30 seconds
                 setTimeout(stopDataCollection, 30000);
 
                 window.addEventListener("devicemotion", collectData);
@@ -129,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function countSteps() {
-        const threshold = 8.0; 
+        const threshold = 8.0;
         const windowSize = 5;
 
         const xData = data.datasets[0].data.map((point) => point.y);
