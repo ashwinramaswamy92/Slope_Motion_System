@@ -65,6 +65,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const startButton = document.getElementById("startButton");
     startButton.addEventListener("click", startDataCollection);
 
+    joinButton.addEventListener("click", () => {
+        const classroomCode = classroomCodeInput.value.trim();
+        if (classroomCode) {
+            socket.emit("joinClassroom", classroomCode);
+            document.getElementById("connectionStatus").style.display = "block";
+            document.getElementById("connectionError").style.display = "block";
+            document.getElementById("connectionStatus").textContent = `Attempting to join classroom with code: ${classroomCode}`;
+            document.getElementById("connectionError").textContent = ""; 
+        }
+    });
+    
+    socket.on('joinedClassroom', (classroomCode) => {
+        document.getElementById("connectionStatus").textContent = `Successfully joined classroom with code: ${classroomCode}`;
+        document.getElementById("connectionError").textContent = ""; 
+    });
+    
+    socket.on('joinError', (error) => {
+        document.getElementById("connectionStatus").textContent = ""; 
+        document.getElementById("connectionError").textContent = `Failed to join classroom: ${error.message}`;
+    });
+
     function startDataCollection() {
         // Reset data and steps
         data.labels = [];
