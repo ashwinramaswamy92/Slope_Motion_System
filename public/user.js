@@ -206,13 +206,16 @@ document.addEventListener("DOMContentLoaded", function () {
   
         }
   
-      //   let lastX = data.labels[data.labels.length - 1]; // Last x value
-      //   let lastY = xData[xData.length - 1]; // Last y value (acceleration)
-        
-      //       if (lastX < 30000) {
-      //           data.labels.push(30000);
-      //           data.datasets[0].data.push({ x: 30000, y: lastY });
-      //       }
+        let lastX = data.labels[data.labels.length - 1]; // Last x value
+        let lastY = xData[xData.length - 1]; // Last y value (acceleration)
+  
+        if(lastX < 30000){// code to extent the graph till end of 30,000ms
+          const step = {
+              time : 30000,
+              acceleration : lastY,
+          };
+          steps.push(step);
+        }
         // Update step count display
         stepCountElement.textContent = `Step Count: ${steps.length / 2}`;
   
