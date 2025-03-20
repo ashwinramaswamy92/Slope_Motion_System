@@ -219,7 +219,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Update step count display
         stepCountElement.textContent = `Step Count: ${steps.length / 2}`;
   
-  
         // Draw steps chart
         drawStepsChart();
     }
