@@ -31,20 +31,25 @@
           </select>
         </div>
         <div class="custom-input-div" id="dataInputContainer">
-          <label for="dataPointsInput"
-            >Enter data points (x,y) separated by spaces:</label
-          >
-          <input
-            type="text"
-            id="dataPointsInput"
-            placeholder="e.g., 1,10 2,20 3,30"
-          />
+          <label for="dataPointsInput"> Enter data points (x,y) separated by spaces:</label>
+          <input type="text" id="dataPointsInput" placeholder="e.g., 1,10 2,20 3,30"/>
+          <select id="data_example_select" class="examples">
+            <option value="v0">default</option>
+            <option value="1,10 2,20 3,30">1,10 2,20 3,30</option>
+            <option value="1,40 2,20 3,40">1,40 2,20 3,40</option>
+          </select>
         </div>
+        
         <div class="custom-input-div" id="functionInputContainer" style="display: none">
-          <label for="functionInput">Enter a function of x (e.g., x**2+3):</label>
+          <label for="functionInput"> Enter a function of x (e.g., x**2+3):</label>
           <input type="text" id="functionInput" placeholder="e.g., x**2+3" />
+          <select id="function_example_select" class="examples">
+            <option value="v0">default</option>
+            <option value="x**2+3">x**2+3</option>
+            <option value="x**3">x**3</option>
+          </select>
         </div>
-      </div>
+        
       <div class="button-container">
         <button id="addDataButton">Add Data</button>
 

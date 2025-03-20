@@ -160,10 +160,12 @@ document.addEventListener("DOMContentLoaded", function () {
   inputTypeSelect.addEventListener("change", () => {
     if (inputTypeSelect.value === "points") {
       dataInputContainer.style.display = "block";
+      dataInputContainer.style.display = "flex";
       functionInputContainer.style.display = "none";
     } else {
       dataInputContainer.style.display = "none";
       functionInputContainer.style.display = "block";
+      functionInputContainer.style.display = "flex";
     }
   });
 
@@ -243,6 +245,38 @@ document.addEventListener("DOMContentLoaded", function () {
     // Optionally, notify the server to clear stored data (if needed)
     socket.emit("clearData");
   });
+
+  // Select DOM elements
+
+// example selection from dropdown
+const dataExampleSelect = document.getElementById("data_example_select");
+const functionExampleSelect = document.getElementById("function_example_select");
+
+// Event listener for data points examples
+dataExampleSelect.addEventListener("change", () => {
+  const selectedValue = dataExampleSelect.value;
+  //console.log("Data example selected:", selectedValue);
+
+  if (selectedValue !== "v0") {
+    dataPointsInput.value = selectedValue;
+  } else {
+    dataPointsInput.value = "";
+  }
+});
+
+// Event listener for function examples
+functionExampleSelect.addEventListener("change", () => {
+  const selectedValue = functionExampleSelect.value;
+  //console.log("Function example selected:", selectedValue);
+
+  if (selectedValue !== "v0") {
+    functionInput.value = selectedValue;
+  } else {
+    functionInput.value = "";
+  }
+});
+  
+  ////////
 
   addDataButton.addEventListener("click", () => {
     const colorIndex = mainData.datasets.length;

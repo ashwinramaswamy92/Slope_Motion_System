@@ -102,12 +102,27 @@ input[type="text"] {
 
 .custom-input-div{
   position: relative;
-  width: 40vw;
+  width: 50vw;
   border: 3px solid;
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 30px;
   background-color: white;
+  display: flex;
+}
+.custom-input-div input{
+  position: relative;
+  margin-left: 10px;
+}
+.examples{
+  position: relative;
+  height:calc(4em + 0.5vw);
+  width: 10em;
+  background-color: rgb(120, 134, 199);
+  border-radius: 10px;
+  font-size: 1em;
+  padding: 10px;
+  margin-left: 20px;
 }
 
 .button-container{
