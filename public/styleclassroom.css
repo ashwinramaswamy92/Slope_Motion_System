@@ -86,7 +86,7 @@ input[type="text"] {
 
 .data-type-div{
   position: relative;
-  width: 25vw;
+  width: 23vw;
   border: 3px solid;
   padding: 20px;
   border-radius: 20px;
@@ -94,6 +94,7 @@ input[type="text"] {
   background-color: white;
 }
 #inputTypeSelect{
+  margin-top: 10px;
   height:calc(3em + 0.5vw);
   background-color: rgb(120, 134, 199);
   border-radius: 10px;
@@ -101,6 +102,8 @@ input[type="text"] {
 }
 
 .custom-input-div{
+  display: flex;
+  flex-direction: row;
   position: relative;
   width: 50vw;
   border: 3px solid;
@@ -151,28 +154,25 @@ input[type="text"] {
     width: 80%;
   }
 
-  /* .chart-container {
-    width: 90vw;
-    height: 40vh;
-    left:1vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    border-radius: 20px;
-  } */
   .input-containers{
     display: flex;
     align-items: center;
     flex-direction: column;
   }
+
   .maxinput-div,
   .data-type-div,
   .custom-input-div {
+    flex-direction: column;
     position: relative;
     width: 80vw;
     padding: 15px;
     border-radius: 15px;
+  }
+
+  .custom-input-div input,
+  .examples{
+    margin-left: 0px;
   }
 
   .button-container {
