@@ -1,4 +1,12 @@
 /* Responsive Typography */
+.container {
+  background: url('Blue.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
 h1{
   text-align: center;
   font-size: 42px;
@@ -72,6 +80,14 @@ input[type="text"] {
   margin-bottom: 30px;
   background-color: rgba(0, 0, 0, 0.133);
   border-radius: 50px; */
+}
+
+canvas {
+  background-color: rgb(253, 251, 251);
+  border: 10px solid  rgba(45, 51, 107, 0.898);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  border-radius: 8px;
 }
 
 .maxinput-div{
