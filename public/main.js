@@ -317,7 +317,7 @@ functionExampleSelect.addEventListener("change", () => {
           const dataPoints = [];
 
           // Generate values for x from 0 to 30 (for 30 seconds)
-          for (let x = 0; x <= 30; x += 1) {
+          for (let x = 0; x <= 30000; x += 1) {
             // Adjust step size if needed
             const y = parsedFunction(x);
             if (!isNaN(y)) {
