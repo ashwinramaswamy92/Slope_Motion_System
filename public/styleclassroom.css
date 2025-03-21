@@ -73,13 +73,9 @@ input[type="text"] {
 
 .chart-container{
   position: relative;
-  /* height: 45vh;
-  width: 50vw;
-  left:23vw; 
-  padding: 30px 10px 10px 10px;
-  margin-bottom: 30px;
-  background-color: rgba(0, 0, 0, 0.133);
-  border-radius: 50px; */
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgb(58, 56, 59);
 }
 
 canvas {
@@ -167,7 +163,7 @@ canvas {
   button {
     font-size: calc(0.9em + 1vw);
     padding: 2%;
-    width: 80%;
+    width: 90%;
   }
 
   .input-containers{
@@ -195,6 +191,7 @@ canvas {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    width: 90%;
   }
 
   #inputTypeSelect {
@@ -205,20 +202,28 @@ canvas {
 
 .chart-container {
   position: relative;
-  padding: 30px 10px 10px 10px;
+  padding: 10px 10px 30px 10px;
   margin-bottom: 30px;
   border-radius: 50px;
+  margin-top: 30px;
+  
+}
+canvas{
+  height: 90%;
 }
 
 /* Fixed size for desktop */
 @media screen and (min-width: 769px) {
   .chart-container {
+    margin-top: 30px;
+    padding: 20px;
     width: 50vw;
     height: 45vh;
     left: 23vw;
   }
 
   canvas#mainChart {
+    margin-top: 0px;
     width: 100% !important;
     height: 100% !important;
   }
