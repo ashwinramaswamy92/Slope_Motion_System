@@ -37,6 +37,14 @@ button:hover {
   background-color: rgb(120, 134, 199);
 }
 
+.button-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap:20px;
+  padding: 20px;
+}
 /* Button Styles */
 button {
   font-size: calc(1em + 1vw);
