@@ -202,9 +202,9 @@ canvas {
 
 .chart-container {
   position: relative;
-  padding: 10px 10px 30px 10px;
-  margin-bottom: 30px;
-  border-radius: 50px;
+  padding: 15px;
+  /* margin-bottom: 30px; */
+  border-radius: 20px;
   margin-top: 30px;
   height: 40vh;
 }
