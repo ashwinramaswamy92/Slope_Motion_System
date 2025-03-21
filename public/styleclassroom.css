@@ -203,13 +203,13 @@ canvas {
 .chart-container {
   position: relative;
   padding: 15px;
-  /* margin-bottom: 30px; */
+  margin-bottom: 30px;
   border-radius: 20px;
   margin-top: 30px;
-  height: 40vh;
+  height: 35vh;
 }
-canvas{
-  height: 90%;
+canvas {
+  height: 90% !important;
 }
 
 /* Fixed size for desktop */
