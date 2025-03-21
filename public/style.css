@@ -86,7 +86,7 @@ input[type="text"] {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 758px) {
   h1 {
     font-size: 32px;
   }
