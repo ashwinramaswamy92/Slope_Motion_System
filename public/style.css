@@ -1,87 +1,87 @@
-*{
+* {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: normal;
 }
+
 .container {
   background: url('Blue.jpeg') no-repeat center center fixed;
   background-size: cover;
   margin: 0;
-  overflow: hidden;
   padding: 0;
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: rgb(255, 242, 242);
 }
+
 h1 {
-  text-align: center;
   font-size: 42px;
   font-weight: bold;
-  color:  rgb(45, 51, 107); 
-  letter-spacing: 1px;  
+  color: rgb(45, 51, 107);
+  letter-spacing: 1px;
 }
 
 h2 {
-  text-align: center;
   font-size: 26px;
   font-weight: bold;
-  color:rgb(120, 134, 199); 
+  color: rgb(120, 134, 199);
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-h3{
-  position: relative;
+h3 {
   margin-top: 10px;
 }
+
 button:hover {
   background-color: rgb(120, 134, 199);
 }
 
-.container{
-  background-color: (255, 242, 242);
-}
 /* Button Styles */
 button {
   font-size: calc(1em + 1vw);
-  padding: 1.5%;
+  padding: 2%;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 10px;
   background-color: rgb(169, 181, 223);
+  width: auto;
 }
 
-.chart-container{
+.chart-container {
   position: relative;
-  /* height: 45vh;
-  width: 50vw;
-  left:23vw; 
-  padding: 30px 10px 10px 10px;
-  margin-bottom: 20px;
-  background-color: rgba(0, 0, 0, 0.133);
-  border-radius: 50px;
-  border: 1px solid rgb(58, 56, 59);  */
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgb(58, 56, 59);
+  max-height: 500px;
 }
+
 canvas {
   background-color: rgb(253, 251, 251);
-  border: 10px solid  rgba(45, 51, 107, 0.898);
+  border: 10px solid rgba(45, 51, 107, 0.898);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   border-radius: 8px;
+  width: 100%;
 }
 
 input[type="number"],
 input[type="text"] {
   font-size: calc(1em + 1vw);
-  padding: 1.5%;
+  padding: 2%;
   border: 1px solid #ccc;
   border-radius: 10px;
-  width: 40%;
+  width: 80%;
+  margin: 10px 0;
   box-sizing: border-box;
-  margin-bottom: 1em;
-  margin-top: 1em;
 }
 
-
-.button-container button{
+.button-container button {
   background-color: rgb(120, 134, 199);
 }
 
@@ -103,48 +103,39 @@ input[type="text"] {
   button {
     font-size: calc(0.9em + 1vw);
     padding: 3%;
-    width: 80%;
+    width: 90%;
   }
-
-  /* .chart-container {
-    width: 90vw;
-    align-items: center;
-    justify-content: center;
-    left: 1vw;
-    height: 40vh;
-    border-radius: 30px;
-  }
-  .chart-container canvas{
-    margin-top: 5vh;
-  } */
 
   input[type="number"],
   input[type="text"] {
     font-size: calc(0.9em + 2vw);
-    width: 80%;
+    width: 90%;
     padding: 3%;
   }
 
   .button-container {
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
 
-  .button-container button{
+  .button-container button {
     font-size: calc(0.9em + 1vw);
-    background-color:  rgb(120, 134, 199);
+    background-color: rgb(120, 134, 199);
     padding: 3%;
-    width: 80%;
+    width: 90%;
     margin-top: 2%;
   }
-}
 
-.chart-container {
-  position: relative;
-}
-
-
-
-
+  .chart-container {
+    width: 95%;
+    padding: 15px;
+    border-radius: 20px;
+    height: 40vh;
+  }
   
+  canvas{
+    height: 90%;
+  }
+}
