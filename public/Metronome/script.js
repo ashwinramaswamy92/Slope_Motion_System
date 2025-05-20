@@ -111,7 +111,7 @@ bpmSlider.addEventListener("input", () => {
 // Update slider and BPM value when typing in the input field
 bpmInput.addEventListener("input", () => {
   const value = bpmInput.value;
-  if (!isNaN(value) && value >= 40 && value <= 200) {
+  if (!isNaN(value) && value >= 0 && value <= 200) {
     bpmSlider.value = value; // Update slider position
     bpmValue.textContent = value; // Update BPM label
 
