@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
           position: "bottom",
           title: {
             display: true,
-            text: "Time (ms)",
+            text: "Time (ms) (X-axis)",
           },
         },
         y: {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
           max: 60,
           title: {
             display: true,
-            text: "Movement Count",
+            text: "Movement Count (Y-axis)",
           },
         },
       },
