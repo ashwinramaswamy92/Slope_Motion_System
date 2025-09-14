@@ -112,12 +112,17 @@ document.addEventListener("DOMContentLoaded", function () {
             countdown--;
             countdownElement.textContent = `Starting in ${countdown}...`;
     
-            if (countdown === 0) {
+            if (countdown > 0) {
+                countdownElement.textContent = `Starting in ${countdown}...`;
+            } else {
                 clearInterval(countdownInterval);
-                countdownElement.textContent = ""; // Clear countdown display
-                countdownElement.style.display = "none";
-    
-                // Start data collection
+                countdownElement.textContent = "Go!";
+                
+                setTimeout(() => {
+                    countdownElement.style.display = "none";
+                    countdownElement.textContent = "";
+                }, 500)
+
                 startTime = new Date().getTime();
                 isCollectingData = true;
                 dataPointCount = 0;
@@ -127,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 updateDataCount();
                 stepCountElement.textContent = "Step Count: 0";
-    
+
                 setTimeout(stopDataCollection, 30000);
                 window.addEventListener("devicemotion", collectData);
             }
