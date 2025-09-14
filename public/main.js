@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
   inputTypeSelect.addEventListener("change", () => {
     if (inputTypeSelect.value === "points") {
       dataInputContainer.style.display = "block";
-      dataInputContainer.style.display = "flex";
+      // dataInputContainer.style.display = "flex";
       functionInputContainer.style.display = "none";
     } else {
       dataInputContainer.style.display = "none";
