@@ -204,7 +204,7 @@ canvas#mainChart {
   height: 100% !important;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .content-row{
     flex-direction: column;
     align-items: center;
