@@ -203,3 +203,25 @@ canvas {
 canvas#mainChart {
   height: 100% !important;
 }
+
+@media screen and (max-width: 768px) {
+  .content-row{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart-container{
+    order: -1;
+    width: 100%;
+    height: 25vh;
+    margin-bottom: 20px;
+  }
+
+  canvas#mainChart{
+    height: 100% !important;
+  }
+
+  .input-containers{
+    width: 100%;
+  }
+}
