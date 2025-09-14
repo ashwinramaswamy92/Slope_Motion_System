@@ -147,3 +147,9 @@ input[type="text"] {
     height: 90%;
   }
 }
+
+#countdown {
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+}
