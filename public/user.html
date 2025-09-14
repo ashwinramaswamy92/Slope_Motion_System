@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="style.css" />
     <style>
       .metronome-container {
-        padding: 10px 50px;
+        padding: 20px 50px;
         background-color: rgba(45, 51, 107, 0.9);
         margin-top: 20px;
         border-radius: 20px;
         border: 3px solid white;
         text-align: center;
-        max-width: 350px;
+        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
       }
@@ -30,12 +30,12 @@
       }
 
       .metronome-controls input {
-        width: 100px;
+        width: 150px;
         text-align: center;
         border-radius: 5px;
         border: none;
         padding: 4px;
-        font-size: 30px;
+        font-size: 50px;
       }
 
       .metronome-controls button {
@@ -45,14 +45,14 @@
         border: none;
         cursor: pointer;
         font-weight: normal; /* ✅ removed bold */
-        font-size: 30px; /* ✅ same size as input */
+        font-size: 50px; /* ✅ same size as input */
       }
 
       /* Metronome animation container */
       #metronome-animation {
         position: relative;
-        width: 180px;
-        height: 180px;
+        width: 360px;
+        height: 360px;
         margin: 0 auto;
       }
 
@@ -63,19 +63,19 @@
         left: 0;
         width: 0;
         height: 0;
-        border-left: 90px solid transparent;
-        border-right: 90px solid transparent;
-        border-bottom: 180px solid rgb(120, 134, 199);
+        border-left: 180px solid transparent;
+        border-right: 180px solid transparent;
+        border-bottom: 360px solid rgb(120, 134, 199);
       }
 
       /* Swinging pendulum */
       .pendulum {
-        width: 8px;
-        height: 110px;
+        width: 16px;
+        height: 220px;
         border-radius: 4px;
         background-color: rgb(15, 54, 83);
         position: absolute;
-        bottom: 45px;
+        bottom: 90px;
         left: calc(50% - 4px);
         transform-origin: bottom center;
         animation: swing var(--swing-duration, 1s) ease-in-out infinite;
@@ -130,7 +130,7 @@
       <!-- 🔽 Metronome Box -->
       <div class="metronome-container">
         <div class="metronome-controls">
-          <label for="bpm-input" style="color:white;font-size: 30px;">BPM:</label>
+          <label for="bpm-input" style="color:white;font-size: 50px;">BPM:</label>
           <input type="number" id="bpm-input" min="40" max="200" value="60" />
           <button id="start-btn">Start</button>
           <button id="stop-btn">Stop</button>

@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       dataInputContainer.style.display = "none";
       functionInputContainer.style.display = "block";
-      functionInputContainer.style.display = "flex";
+      // functionInputContainer.style.display = "flex";
     }
   });
 
