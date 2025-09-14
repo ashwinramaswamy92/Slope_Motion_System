@@ -44,8 +44,8 @@
         background-color: white;
         border: none;
         cursor: pointer;
-        font-weight: normal; /* ✅ removed bold */
-        font-size: 50px; /* ✅ same size as input */
+        font-weight: normal;
+        font-size: 50px;
       }
 
       /* Metronome animation container */
@@ -131,7 +131,7 @@
       <div class="metronome-container">
         <div class="metronome-controls">
           <label for="bpm-input" style="color:white;font-size: 50px;">BPM:</label>
-          <input type="number" id="bpm-input" min="40" max="200" value="60" />
+          <input type="text" id="bpm-input" value="60" inputmode="numeric" pattern="[0-9]*" />
           <button id="start-btn">Start</button>
           <button id="stop-btn">Stop</button>
         </div>
@@ -177,17 +177,33 @@
         intervalId = null;
       }
 
-      startBtn.addEventListener("click", startMetronome);
-      stopBtn.addEventListener("click", stopMetronome);
+      // Allow free typing (no immediate clamping)
       bpmInput.addEventListener("input", () => {
-        const bpm = Math.min(Math.max(parseInt(bpmInput.value) || 60, 40), 200);
+        bpmInput.value = bpmInput.value.replace(/[^0-9]/g, "");
+      });
+
+      // Clamp value only when user finishes typing (blur) or presses Enter
+      function applyBpm() {
+        let bpm = parseInt(bpmInput.value) || 60;
+        bpm = Math.min(Math.max(bpm, 40), 200);
         bpmInput.value = bpm;
         document.documentElement.style.setProperty("--swing-duration", (60 / bpm) + "s");
         if (intervalId) {
           stopMetronome();
           startMetronome();
         }
+      }
+
+      bpmInput.addEventListener("blur", applyBpm);
+      bpmInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          applyBpm();
+          bpmInput.blur(); // remove focus so user sees final value
+        }
       });
+
+      startBtn.addEventListener("click", startMetronome);
+      stopBtn.addEventListener("click", stopMetronome);
     </script>
   </body>
 </html>
