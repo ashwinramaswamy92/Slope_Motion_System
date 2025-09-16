@@ -193,6 +193,8 @@ canvas {
 }
 
 .chart-container {
+  display: flex;
+  flex-direction: column;
   position: relative;
   padding: 15px;
   margin-bottom: 30px;
@@ -202,6 +204,59 @@ canvas {
 }
 canvas#mainChart {
   height: 100% !important;
+}
+
+.chart-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(45, 51, 107);
+  flex-wrap: wrap;
+}
+
+.chart-controls label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.chart-controls label:hover {
+  background: rgba(169, 181, 223, 0.3);
+  transform: scale(1.05);
+}
+
+.chart-controls input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgb(45, 51, 107);
+  border-radius: 6px;
+  margin-right: 8px;
+  display: grid;
+  place-content: center;
+  background: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.chart-controls input[type="checkbox"]:checked {
+  background: rgb(45, 51, 107);
+  border-color: rgb(45, 51, 107);
+}
+
+.chart-controls input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 800px) {
