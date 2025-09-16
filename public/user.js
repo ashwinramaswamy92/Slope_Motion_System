@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     max: 30000,
                     title: {
                         display: true,
-                        text: "Time (ms)",
+                        text: "Time (ms) - (X - axis)",
                     },
                 },
                 y: {
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     max: 80,
                     title: {
                         display: true,
-                        text: "Acceleration",
+                        text: "Acceleration - (Y -axis)",
                     },
                 },
             },

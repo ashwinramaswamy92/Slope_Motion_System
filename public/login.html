@@ -56,6 +56,10 @@
     }
     /* Responsive styles for phones */
     @media (max-width: 768px) {
+    #Teacher_btn{
+      display: none;
+    }
+    
     .login-container {
         padding: 20px; /* Smaller padding for phones */
         font-size: 20px; /* Smaller font size for phones */
@@ -125,7 +129,8 @@
   <div class="login-container">
     <h1>Select Mode</h1>
     <button onclick="openMode('student')">Student Mode</button>
-    <button onclick="openMode('teacher')">Teacher Mode</button>
+    <button id="Teacher_btn" onclick="openMode('teacher')">Teacher Mode</button>
+    <!-- <p id="T_p" style="display: none;">Teacher Mode only available in Laptop/Desktops</p> -->
   </div>
   <div id="password-popup">
     <div id ="popup" style="background-color:rgba(45, 51, 107, 0.97); padding:60px; border-radius:20px; text-align:center;">
