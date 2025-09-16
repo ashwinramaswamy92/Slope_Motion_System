@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         position: "bottom",
                         title: {
                             display: true,
-                            text: "Time (ms)",
+                            text: "Time (ms) - (X - axis)",
                         },
                     },
                     y: {
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         max: 50, // Default max value
                         title: {
                             display: true,
-                            text: "Movement Count",
+                            text: "Movement Count - (Y - axis)",
                         },
                     },
                 },
