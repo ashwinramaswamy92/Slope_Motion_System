@@ -16,30 +16,18 @@ document.addEventListener("DOMContentLoaded", function () {
         x: {
           type: "linear",
           position: "bottom",
-          grid: {
-            display: true,
-          },
-          title: {
-            display: true,
-            text: "Time (ms) (X-axis)",
-          },
+          grid: { display: true },
+          title: { display: true, text: "Time (ms) (X-axis)" },
         },
         y: {
           min: 0,
           max: 60,
-          grid: {
-            display: true,
-          },
-          title: {
-            display: true,
-            text: "Movement Count (Y-axis)",
-          },
+          grid: { display: true },
+          title: { display: true, text: "Movement Count (Y-axis)" },
         },
       },
       plugins: {
-        legend: {
-          display: true,
-        },
+        legend: { display: true },
       },
     },
   });
@@ -57,31 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   const names = [
-    "Penguin",
-    "Tortoise",
-    "Fox",
-    "Dog",
-    "Cat",
-    "Bat",
-    "Bull",
-    "Chicken",
-    "Horse",
-    "Lizard",
-    "Goat",
-    "Kangaroo",
-    "Rabbit",
-    "Deer",
-    "Cheetah",
-    "Zebra",
-    "Elephant",
-    "Leopard",
-    "Tiger",
-    "Wolf",
-    "Dolphin",
-    "Panda",
-    "Owl",
-    "Hedgehog",
-    "Squirrel"
+    "Penguin", "Tortoise", "Fox", "Dog", "Cat", "Bat", "Bull", "Chicken",
+    "Horse", "Lizard", "Goat", "Kangaroo", "Rabbit", "Deer", "Cheetah",
+    "Zebra", "Elephant", "Leopard", "Tiger", "Wolf", "Dolphin", "Panda",
+    "Owl", "Hedgehog", "Squirrel"
   ];
 
   let randomNames = null;
@@ -89,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function shuffleNames(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+      [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
   }
@@ -102,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return colors[index % colors.length];
   }
 
-  // Handle dropdown change for input type selection
   const inputTypeSelect = document.getElementById("inputTypeSelect");
   const dataInputContainer = document.getElementById("dataInputContainer");
   const functionInputContainer = document.getElementById("functionInputContainer");
@@ -256,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
             backgroundColor: backgroundColor,
             data: dataPoints,
             fill: false,
+            isCustom: true // Mark as custom
           });
 
           mainChart.update();
@@ -283,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
             backgroundColor: backgroundColor,
             data: dataPoints,
             fill: false,
+            isCustom: true // Mark as custom
           });
 
           mainChart.update();
@@ -294,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // === NEW: Toggle Controls for Plot, Grid, Axes, Legend ===
+  // === Toggle Controls ===
   document.getElementById("togglePlot").addEventListener("change", function () {
     mainData.datasets.forEach((ds) => (ds.hidden = !this.checked));
     mainChart.update();
@@ -314,6 +282,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("toggleLegend").addEventListener("change", function () {
     mainChart.options.plugins.legend.display = this.checked;
+    mainChart.update();
+  });
+
+  // === NEW: Toggle Algebra (custom data only) ===
+  document.getElementById("toggleAlgebra").addEventListener("change", function () {
+    mainData.datasets.forEach((ds) => {
+      if (ds.isCustom) {
+        ds.hidden = !this.checked;
+      }
+    });
     mainChart.update();
   });
 });
