@@ -243,9 +243,9 @@ document.addEventListener("DOMContentLoaded", function () {
               dataPoints.push({ x, y });
             }
           }
-
+          const displayFuncStr = funcStr.replace(/\*\*/g, "^");
           mainData.datasets.push({
-            label: `Function: y = ${funcStr}`,
+            label: `Function: y = ${displayFuncStr}`,
             borderColor: borderColor,
             backgroundColor: backgroundColor,
             data: dataPoints,
