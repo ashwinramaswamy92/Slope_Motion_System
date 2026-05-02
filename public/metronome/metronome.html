@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metronome</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="metronome.css">
+</head>
+<body>
+  <h1>Metronome</h1>
+  <div class="container">
+    <div class="control-display">
+      <div id="controls">
+        <label for="bpm-slider">BPM: <span id="bpm-value">60</span></label>
+        <input type="range" id="bpm-slider" min="0" max="200" value="60">
+        <input type="text" id="bpm-input" min="0" max="200" value="60">
+        <div class="button-container">
+          <button id="start-btn">Start</button>
+          <button id="stop-btn">Stop</button>
+        </div>
+      </div>
+      <div class="metronome-animation-wrapper">
+        <div id="metronome-animation">
+          <div id="triangle-body"></div>
+          <div class="pendulum"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="graph-container">
+      <div class="g-container">
+        <canvas id="graph-beats"></canvas>
+      </div>
+      <div class="g-container">
+        <canvas id="graph-bpm"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module">
+    import { initMetronomeGraph } from './metronome.js';
+    initMetronomeGraph(document.querySelector('.container'));
+  </script>
+</body>
+</html>

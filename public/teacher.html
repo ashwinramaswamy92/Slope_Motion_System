@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher – Slope Walker</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/teacher.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="title-container">
+      <h1 class="title">Slope Walker</h1>
+      <h3 class="title">Students Movement Graphs</h3>
+    </div>
+
+    <div class="content-row">
+      <!-- Left side: inputs -->
+      <div class="input-containers">
+        <div class="maxinput-div">
+          <label for="yMaxInput">Enter max value for Y-axis:</label>
+          <input type="number" id="yMaxInput" value="60">
+        </div>
+        <div class="data-type-div">
+          <label for="inputTypeSelect">Choose input type:</label>
+          <select id="inputTypeSelect">
+            <option value="points">Data Points (x,y)</option>
+            <option value="function">Function (e.g., y=x^2+3)</option>
+          </select>
+        </div>
+        <div class="custom-input-div" id="dataInputContainer">
+          <label for="dataPointsInput">Enter data points (x,y) separated by spaces:</label>
+          <input type="text" id="dataPointsInput" placeholder="e.g., 1,10 2,20 3,30">
+          <select id="data_example_select" class="examples">
+            <option value="v0">Type</option>
+            <option value="0,0 10000,10 20000,20 30000,30">0,0 10000,10 20000,20 30000,30</option>
+            <option value="0,0 10000,20 20000,40 30000,60">0,0 10000,20 20000,40 30000,60</option>
+            <option value="0,0 10000,30 20000,60 30000,90">0,0 10000,30 20000,60 30000,90</option>
+            <option value="0,0 10000,20 20000,20 30000,40">0,0 10000,20 20000,20 30000,40</option>
+            <option value="0,0 10000,30 30000,30">0,0 10000,30 30000,30</option>
+            <option value="0,0 10000,10 20000,40 30000,60">0,0 10000,10 20000,40 30000,60</option>
+            <option value="0,0 10000,10 20000,30 30000,50">0,0 10000,10 20000,30 30000,50</option>
+            <option value="0,50 10000,40 20000,30 30000,20">Negative slope</option>
+            <option value="0,-10 10000,0 20000,10 30000,20">Negative offset</option>
+            <option value="0,0 5000,10 15000,10 20000,5 30000,5">Step-like drop</option>
+            <option value="0,30 10000,30 20000,15 30000,15">Flat then drop</option>
+          </select>
+        </div>
+        <div class="custom-input-div" id="functionInputContainer" style="display: none">
+          <label for="functionInput">Enter a function of x (e.g., x^2+3):</label>
+          <input type="text" id="functionInput" placeholder="e.g., x^2+3">
+          <select id="function_example_select" class="examples">
+            <option value="v0">Type</option>
+            <option value="(x/1000)**3">(x/1000)^3</option>
+            <option value="(x/1000)**2">(x/1000)^2</option>
+            <option value="(x/1000)+10">(x/1000)+10</option>
+            <option value="(x/1000)*2">(x/1000)*2</option>
+            <option value="(x/1000)*3">(x/1000)*3</option>
+            <option value="(x/1000)">(x/1000)</option>
+            <option value="-0.001*x+50">Negative slope line (-0.001*x+50)</option>
+            <option value="(x-15000)/1000">line with offset</option>
+          </select>
+        </div>
+        <div class="button-container">
+          <button id="addDataButton">Add Data</button>
+          <button id="generateCodeButton">Generate Classroom Code</button>
+          <button id="downloadDataButton">Download Data</button>
+          <button id="refreshDataButton">Refresh Data</button>
+        </div>
+        <p id="codeDisplay" style="color: whitesmoke; font-size: 20px; font-weight: 600;"></p>
+      </div>
+
+      <!-- Right side: chart -->
+      <div class="chart-container">
+        <canvas id="mainChart"></canvas>
+        <div class="chart-controls">
+          <label><input type="checkbox" id="togglePlot" checked> Show Plot</label>
+          <label><input type="checkbox" id="toggleGrid" checked> Show Grid</label>
+          <label><input type="checkbox" id="toggleAxes" checked> Show Axes</label>
+          <label><input type="checkbox" id="toggleLegend" checked> Show Legend</label>
+          <label><input type="checkbox" id="toggleAlgebra"> Show Algebra</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/teacher.js"></script>
+</body>
+</html>

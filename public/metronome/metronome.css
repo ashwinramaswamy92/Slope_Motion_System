@@ -1,0 +1,87 @@
+/* Styles for both the standalone metronome and the embedded one */
+#metronome-container .metronome-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+#metronome-container .metronome-controls input {
+  width: 150px;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+  padding: 4px;
+  font-size: 50px;
+}
+#metronome-container .metronome-controls button {
+  padding: 4px 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 50px;
+}
+
+/* Metronome animation container */
+#metronome-animation {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+}
+
+/* Triangular body */
+#triangle-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 200px solid rgb(120, 134, 199);
+}
+
+/* Default pendulum size (can be overridden) */
+.pendulum {
+  width: 10px;
+  border-radius: 5px;
+  height: 120px;
+  background-color: rgb(15, 54, 83);
+  position: absolute;
+  bottom: 50px;
+  left: calc(50% - 2px);
+  transform-origin: bottom center;
+  animation: swing var(--swing-duration, 1s) ease-in-out infinite;
+  border: 2px solid white;
+}
+
+@keyframes swing {
+  0%   { transform: rotate(-20deg); }
+  50%  { transform: rotate(20deg); }
+  100% { transform: rotate(-20deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #metronome-animation {
+    width: 150px;
+    height: 150px;
+  }
+  #triangle-body {
+    border-left-width: 75px;
+    border-right-width: 75px;
+    border-bottom-width: 150px;
+  }
+  .pendulum {
+    height: 90px;
+    bottom: 30px;
+  }
+  #metronome-container .metronome-controls input,
+  #metronome-container .metronome-controls button {
+    font-size: 32px;
+    padding: 2px 6px;
+  }
+}

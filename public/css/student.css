@@ -1,0 +1,85 @@
+body {
+  background: url('../assets/images/Blue.jpeg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  padding-bottom: 30px;
+}
+
+#head {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+#classroomInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#classroomCode {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 18px;
+}
+
+#joinButton {
+  background-color: rgb(169, 181, 223);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#joinButton:hover {
+  background-color: rgb(120, 134, 199);
+}
+
+.chart-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+#countdown {
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+}
+
+.center-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#yMaxInput {
+  width: 200px;
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.metronome-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px 50px;
+  background-color: rgba(45, 51, 107, 0.9);
+  border-radius: 20px;
+  border: 3px solid white;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+  }
+}

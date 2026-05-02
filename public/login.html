@@ -3,22 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Login</title>
+  <link rel="stylesheet" href="css/main.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: url('Blue.jpeg') no-repeat center center fixed;
+      background: url('assets/images/Blue.jpeg') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      transition: background-color 0.3s ease;
-      overflow: hidden;
     }
     .login-container {
-      background-color:rgba(45, 51, 107, 0.726);
+      background-color: rgba(45, 51, 107, 0.726);
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -29,7 +26,7 @@
     }
     button {
       background-color: rgb(169, 181, 223);
-      color: rgb(0, 0, 0);
+      color: black;
       border: none;
       font-size: 20px;
       padding: 10px 20px;
@@ -38,44 +35,48 @@
       cursor: pointer;
     }
     button:hover {
-      background-color:  rgb(120, 134, 199);
+      background-color: rgb(120, 134, 199);
     }
     #password-popup {
       display: none;
       color: white;
       font-size: 24px;
-      font-weight: bold;  
+      font-weight: bold;
       position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%; 
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
       justify-content: center;
       align-items: center;
     }
-    /* Responsive styles for phones */
+    #popup {
+      background-color: rgba(45, 51, 107, 0.97);
+      padding: 60px;
+      border-radius: 20px;
+      text-align: center;
+    }
     @media (max-width: 768px) {
-    #Teacher_btn{
-      display: none;
-    }
-    
-    .login-container {
-        padding: 20px; /* Smaller padding for phones */
-        font-size: 20px; /* Smaller font size for phones */
-        }
-    button {
-        font-size: 16px; /* Adjusted button font size for phones */
-        padding: 8px 16px;
-        }
-    #password-popup {
-        font-size: 18px; /* Smaller popup text for phones */
-        }
-    #popup{
-        padding: 30px;
-    }
+      #Teacher_btn { display: none; }
+      .login-container { padding: 20px; font-size: 20px; }
+      button { font-size: 16px; padding: 8px 16px; }
+      #popup { padding: 30px; }
     }
   </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Select Mode</h1>
+    <button onclick="openMode('student')">Student Mode</button>
+    <button id="Teacher_btn" onclick="openMode('teacher')">Teacher Mode</button>
+  </div>
+  <div id="password-popup">
+    <div id="popup">
+      <h2>Enter Password</h2>
+      <input type="password" id="password-input" style="padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
+      <p id="password-message" style="height:20px;"></p>
+      <button onclick="checkPassword()">Submit</button>
+      <button onclick="closePopup()">Cancel</button>
+    </div>
+  </div>
   <script>
     // Utility function to flash the background color
     function flashColor(color, duration, callback) {
@@ -87,59 +88,37 @@
       }, duration);
     }
 
-    // Opens the popup if teacher mode is selected.
     function openMode(mode) {
       if (mode === 'teacher') {
-        // Clear previous input and messages
         document.getElementById('password-input').value = '';
         document.getElementById('password-message').textContent = '';
         document.getElementById('password-popup').style.display = 'flex';
       } else {
-        window.location.href = 'user.html';
+        window.location.href = 'student.html';
       }
     }
 
-    // Checks the teacher password and flashes the main page accordingly.
     function checkPassword() {
       let password = document.getElementById('password-input').value;
       let messageEl = document.getElementById('password-message');
-      if (password === 'admin123') { // replace 'admin123' with your desired password
+      if (password === 'admin123') {
         messageEl.style.color = 'white';
         messageEl.textContent = 'Correct password!';
         flashColor('lightgreen', 500, function() {
-          window.location.href = 'index.html';
+          window.location.href = 'teacher.html';
         });
       } else {
         messageEl.style.color = 'white';
         messageEl.textContent = 'Incorrect password!';
         flashColor('lightcoral', 500, function() {
-          // Clear input field after flash to allow another try.
           document.getElementById('password-input').value = '';
         });
       }
     }
 
-    // Closes the password popup.
     function closePopup() {
       document.getElementById('password-popup').style.display = 'none';
     }
   </script>
-</head>
-<body>
-  <div class="login-container">
-    <h1>Select Mode</h1>
-    <button onclick="openMode('student')">Student Mode</button>
-    <button id="Teacher_btn" onclick="openMode('teacher')">Teacher Mode</button>
-    <!-- <p id="T_p" style="display: none;">Teacher Mode only available in Laptop/Desktops</p> -->
-  </div>
-  <div id="password-popup">
-    <div id ="popup" style="background-color:rgba(45, 51, 107, 0.97); padding:60px; border-radius:20px; text-align:center;">
-      <h2>Enter Password</h2>
-      <input type="password" id="password-input" style="padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
-      <p id="password-message" style="height:20px;"></p>
-      <button onclick="checkPassword()">Submit</button>
-      <button onclick="closePopup()">Cancel</button>
-    </div>   
-  </div>
 </body>
 </html>

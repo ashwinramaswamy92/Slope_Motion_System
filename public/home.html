@@ -1,80 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('Blue.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            transition: background-color 0.3s ease;
-            overflow: hidden;
-        }
-        .container {
-            background-color: rgba(45, 51, 107, 0.726);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            color: white;
-            font-size: 26px;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .button-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        button {
-            background-color: rgb(169, 181, 223);
-            color: rgb(0, 0, 0);
-            border: none;
-            font-size: 20px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            max-width: 200px;
-        }
-        button:hover {
-            background-color: rgb(120, 134, 199);
-        }
-        @media (max-width: 768px) {
-            .container {
-                width: 80%;
-                padding: 30px;
-                font-size: 22px;
-            }
-            .button-container {
-                flex-direction: column;
-            }
-            button {
-                font-size: 18px;
-                padding: 8px 16px;
-                max-width: 100%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Home‑page specific styles */
+    body {
+      background: url('assets/images/Blue.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: rgba(45, 51, 107, 0.726);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      color: white;
+      font-size: 26px;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    button {
+      background-color: rgb(169, 181, 223);
+      color: black;
+      border: none;
+      font-size: 20px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      max-width: 200px;
+    }
+    button:hover {
+      background-color: rgb(120, 134, 199);
+    }
+    @media (max-width: 768px) {
+      .container { width: 80%; padding: 30px; font-size: 22px; }
+      button { font-size: 18px; padding: 8px 16px; max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome</h1>
-        <div class="button-container">
-            <button onclick="location.href='Metronome/index.html'">Metronome</button>
-            <button onclick="location.href='login.html'">Slope Walker</button>
-        </div>
+  <div class="container">
+    <h1>Welcome</h1>
+    <div class="button-container">
+      <button onclick="location.href='metronome/metronome.html'">Metronome</button>
+      <button onclick="location.href='login.html'">Slope Walker</button>
     </div>
+  </div>
 </body>
 </html>

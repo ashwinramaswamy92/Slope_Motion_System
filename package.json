@@ -1,9 +1,10 @@
 {
   "name": "slope",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,7 +12,7 @@
   "dependencies": {
     "express": "^4.21.2",
     "socket.io": "^4.7.5",
-    "uuid": "^10.0.0"
+    "uuid": "^14.0.0"
   },
   "keywords": [],
   "description": ""
