@@ -1,3 +1,5 @@
+// server/socketHandlers.js
+
 const classroomManager = require('./classroomManager');
 const { removeRedundantXValues } = require('./utils/dataUtils');
 

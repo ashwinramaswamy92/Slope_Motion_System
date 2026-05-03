@@ -1,3 +1,5 @@
+// public/js/student.js
+
 import { socket } from './socketClient.js';
 import { initMetronome } from '../metronome/metronome.js';
 

@@ -1,3 +1,5 @@
+// server/classroomManager.js
+
 const { v4: uuidv4 } = require('uuid');
 
 class ClassroomManager {

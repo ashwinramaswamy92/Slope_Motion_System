@@ -1,3 +1,5 @@
+// public/metronome/metronome.js
+
 // Reusable metronome component.
 // For standalone page: call initMetronomeGraph(container) where container has the expected structure.
 // For embedding: call initMetronome(container) where container is any empty div – it creates the minimal UI.

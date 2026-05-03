@@ -1,3 +1,5 @@
+// public/js/utils.js
+
 /**
  * Converts user data array to CSV string.
  * @param {Array} data - Array of { user: string, data: { labels: [], userSteps: [] } }

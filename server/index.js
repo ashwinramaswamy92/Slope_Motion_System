@@ -1,7 +1,9 @@
+// server/index.js
+
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
-const path = require("path");                          
+const path = require("path");
 const socketHandlers = require("./socketHandlers");
 
 const app = express();
